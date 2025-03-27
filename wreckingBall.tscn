@@ -1,3 +1,97 @@
-[gd_scene format=3 uid="uid://dirvpph3wmth2"]
+[gd_scene load_steps=8 format=3 uid="uid://ddcqkwrj8arvq"]
+
+[ext_resource type="Texture2D" uid="uid://c4uuvownvh8sv" path="res://assets/rope.png" id="1_v7ig0"]
+[ext_resource type="Texture2D" uid="uid://dyrr6lr7gbtwm" path="res://assets/wreckingball.png" id="2_010ae"]
+[ext_resource type="Texture2D" uid="uid://cxdelb3shwmot" path="res://assets/circler.png" id="3_rk4fm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3wmq"]
+radius = 32.1403
+
+[sub_resource type="Animation" id="Animation_6c1bt"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rope:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.5, 3.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4.75, -49), Vector2(-4.75, -49), Vector2(-4.75, -49), Vector2(-4.75, -49), Vector2(-4.75, -49)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rope:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.5, 3.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.00900841, -1.5708, -3.14159, -4.71239, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_hidf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rope:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4.75, -49)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rope:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.00900841]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lb45t"]
+_data = {
+"RESET": SubResource("Animation_hidf2"),
+"new_animation": SubResource("Animation_6c1bt")
+}
 
 [node name="Node2D" type="Node2D"]
+
+[node name="rope" type="Sprite2D" parent="."]
+position = Vector2(-4.75, -49)
+rotation = 0.00900841
+texture = ExtResource("1_v7ig0")
+offset = Vector2(5.07141, 48.9678)
+
+[node name="wreckingball" type="Sprite2D" parent="rope"]
+position = Vector2(-0.271781, 0.994306)
+texture = ExtResource("2_010ae")
+offset = Vector2(-1, 111)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rope/wreckingball"]
+position = Vector2(1, 109)
+rotation = -6.28319
+shape = SubResource("CircleShape2D_v3wmq")
+
+[node name="circle" type="Sprite2D" parent="."]
+position = Vector2(-5, -42)
+texture = ExtResource("3_rk4fm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lb45t")
+}
