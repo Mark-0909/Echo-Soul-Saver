@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=9 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_k0vyt"]
-[ext_resource type="Texture2D" uid="uid://dglmnta36e35n" path="res://assets/tile_0002.png" id="1_xbb2b"]
-[ext_resource type="Texture2D" uid="uid://d4iks6f47qaqf" path="res://assets/tile_0003.png" id="2_u3rfh"]
+[ext_resource type="Texture2D" uid="uid://ck8r2pte076gq" path="res://assets/1.png" id="4_htrtc"]
+[ext_resource type="Texture2D" uid="uid://dm7iv71bv8hkf" path="res://assets/2.png" id="5_ah1ur"]
+[ext_resource type="Texture2D" uid="uid://dfwxuid70jdrc" path="res://assets/3.png" id="6_fppbh"]
+[ext_resource type="Texture2D" uid="uid://dkmrla2j4hhyh" path="res://assets/5.png" id="7_f6wob"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4a28"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xbb2b")
+"texture": ExtResource("4_htrtc")
 }],
 "loop": true,
 "name": &"idle",
@@ -16,7 +18,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_u3rfh")
+"texture": ExtResource("5_ah1ur")
 }],
 "loop": true,
 "name": &"jump",
@@ -24,28 +26,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xbb2b")
+"texture": ExtResource("4_htrtc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_u3rfh")
+"texture": ExtResource("5_ah1ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_fppbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ah1ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f6wob")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7luo"]
-radius = 8.0
-height = 22.0
+radius = 14.0
+height = 34.0
+
+[sub_resource type="Gradient" id="Gradient_cxaek"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [node name="Node2D" type="CharacterBody2D"]
 script = ExtResource("1_k0vyt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
-animation = &"walk"
-autoplay = "walk"
+animation = &"jump"
+frame_progress = 0.92479
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_q7luo")
+
+[node name="DustTrail" type="Line2D" parent="."]
+default_color = Color(0.451887, 0.313576, 0.207261, 1)
+gradient = SubResource("Gradient_cxaek")
