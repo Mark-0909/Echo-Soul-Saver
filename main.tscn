@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=14 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://killzone.tscn" id="3_eagbo"]
 [ext_resource type="PackedScene" uid="uid://cfamekk0e5l8j" path="res://coin.tscn" id="4_gi38t"]
 [ext_resource type="Script" path="res://game_manager.gd" id="6_0hxsx"]
+[ext_resource type="PackedScene" uid="uid://d0a5qb2ue5u0h" path="res://spikes.tscn" id="7_hh8me"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -303,7 +304,7 @@ sources/0 = SubResource("TileSetAtlasSource_hfa0x")
 font_color = Color(6.31716e-08, 0.0777424, 0.0608874, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x4on0"]
-distance = -149.0
+distance = -234.0
 
 [node name="main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-710.0]
@@ -339,27 +340,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1.6, 1.6)
 
-[node name="Node" type="Node" parent="."]
+[node name="Coins" type="Node" parent="."]
 
-[node name="coin5" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin5" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(151, -69)
 
-[node name="coin3" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin3" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(-40, -117)
 
-[node name="coin2" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin2" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(-25, -67)
 
-[node name="coin" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(-57, -67)
 
-[node name="coin4" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin4" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(55, -87)
 
-[node name="coin6" parent="Node" instance=ExtResource("4_gi38t")]
+[node name="coin6" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(88, -38)
-
-[node name="coin7" parent="Node" instance=ExtResource("4_gi38t")]
 
 [node name="killzone" parent="." instance=ExtResource("3_eagbo")]
 position = Vector2(122, -66)
@@ -370,3 +369,13 @@ shape = SubResource("WorldBoundaryShape2D_x4on0")
 [node name="gameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("6_0hxsx")
+
+[node name="Timer" type="Timer" parent="gameManager"]
+wait_time = 0.935
+
+[node name="Spikes" type="Node" parent="."]
+
+[node name="spikes" parent="Spikes" instance=ExtResource("7_hh8me")]
+position = Vector2(-268, 46)
+
+[connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

@@ -1,15 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0a5qb2ue5u0h"]
+[gd_scene load_steps=6 format=3 uid="uid://d0a5qb2ue5u0h"]
 
 [ext_resource type="Texture2D" uid="uid://bnus026tmujxp" path="res://assets/tilemap_packed.png" id="1_iiwfq"]
-
-[sub_resource type="GDScript" id="GDScript_6d3lb"]
-script/source = "extends Area2D
-
-
-func _on_body_entered(body: Node2D) -> void:
-	get_tree().reload_current_scene()
-	print(\"You died\")
-"
+[ext_resource type="Script" path="res://spikes.gd" id="1_qpktd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_euhfk"]
 atlas = ExtResource("1_iiwfq")
@@ -26,10 +18,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a12xq"]
+size = Vector2(18, 9)
+
 [node name="spikes" type="Area2D"]
-script = SubResource("GDScript_6d3lb")
+script = ExtResource("1_qpktd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_57mac")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_a12xq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
