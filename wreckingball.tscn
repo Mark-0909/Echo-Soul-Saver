@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccybxu1vb5js"]
+
+[ext_resource type="Script" path="res://wreckingball.gd" id="1_qp56c"]
+[ext_resource type="Texture2D" uid="uid://c4uuvownvh8sv" path="res://assets/rope.png" id="1_v7ig0"]
+[ext_resource type="Texture2D" uid="uid://dyrr6lr7gbtwm" path="res://assets/wreckingball.png" id="2_010ae"]
+[ext_resource type="Texture2D" uid="uid://cxdelb3shwmot" path="res://assets/circler.png" id="3_rk4fm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrqk7"]
+radius = 26.0
+
+[sub_resource type="Animation" id="Animation_ldfsd"]
+resource_name = "rotate"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rope:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.5, 3.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rope:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.23333, 2.5, 3.73333, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.0079432, -1.5708, -3.14159, -4.71239, -6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.433333, 0.533333, 0.633333, 0.7, 0.8, 0.9, 1.03333, 1.13333, 1.23333, 1.33333, 1.4, 1.5, 1.63333, 1.73333, 1.83333, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.33333, 4.43333, 4.56667, 4.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.90735e-06, 116), Vector2(18, 113), Vector2(32, 110), Vector2(46, 106), Vector2(58, 99), Vector2(72, 90), Vector2(82, 80), Vector2(89, 73), Vector2(97, 61), Vector2(103, 48), Vector2(111, 30), Vector2(114, 15), Vector2(115, 0), Vector2(115, -14), Vector2(113, -23), Vector2(108, -36), Vector2(100, -55), Vector2(93, -66), Vector2(84, -77), Vector2(78, -84), Vector2(67, -94), Vector2(54, -101), Vector2(42, -108), Vector2(29, -112), Vector2(17, -114), Vector2(1, -116), Vector2(-14, -115), Vector2(-29, -112), Vector2(-41, -108), Vector2(-54, -102), Vector2(-66, -94), Vector2(-79, -84), Vector2(-90, -73), Vector2(-98, -61), Vector2(-105, -47), Vector2(-109, -34), Vector2(-111, -21), Vector2(-116, -7), Vector2(-115, 8), Vector2(-113, 23), Vector2(-108, 36), Vector2(-103, 50), Vector2(-97, 62), Vector2(-84, 77), Vector2(-73, 88), Vector2(-58, 100), Vector2(-46, 106)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333, 0.433333, 0.533333, 0.633333, 0.7, 0.8, 0.9, 1.03333, 1.13333, 1.23333, 1.33333, 1.4, 1.5, 1.63333, 1.73333, 1.83333, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.33333, 4.43333, 4.56667, 4.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259, 0.157259]
+}
+
+[sub_resource type="Animation" id="Animation_8hi3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("rope:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("rope:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0079432]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.90735e-06, 116)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.157259]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mb4h"]
+_data = {
+"RESET": SubResource("Animation_8hi3c"),
+"rotate": SubResource("Animation_ldfsd")
+}
+
+[node name="wreckingball" type="Area2D"]
+script = ExtResource("1_qp56c")
+
+[node name="rope" type="Sprite2D" parent="."]
+rotation = -0.0079432
+texture = ExtResource("1_v7ig0")
+offset = Vector2(4, 49)
+
+[node name="ball" type="Sprite2D" parent="rope"]
+position = Vector2(-2, 116)
+texture = ExtResource("2_010ae")
+
+[node name="circle" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+texture = ExtResource("3_rk4fm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.90735e-06, 116)
+rotation = 0.157259
+shape = SubResource("CircleShape2D_hrqk7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6mb4h")
+}
+autoplay = "rotate"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

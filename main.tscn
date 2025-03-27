@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=15 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cfamekk0e5l8j" path="res://coin.tscn" id="4_gi38t"]
 [ext_resource type="Script" path="res://game_manager.gd" id="6_0hxsx"]
 [ext_resource type="PackedScene" uid="uid://d0a5qb2ue5u0h" path="res://spikes.tscn" id="7_hh8me"]
-[ext_resource type="PackedScene" uid="uid://4cv4m8cuk6hy" path="res://wreckingball.tscn" id="8_4fj6q"]
+[ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="8_4fj6q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -307,10 +307,6 @@ font_color = Color(6.31716e-08, 0.0777424, 0.0608874, 1)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x4on0"]
 distance = -234.0
 
-[sub_resource type="GDScript" id="GDScript_vw4ke"]
-script/source = "extends Area2D
-"
-
 [node name="main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [-710.0]
 
@@ -385,9 +381,8 @@ position = Vector2(-169, -2)
 
 [node name="wreckingballs" type="Node" parent="."]
 
-[node name="Node2D" parent="wreckingballs" instance=ExtResource("8_4fj6q")]
-position = Vector2(-279, 28)
-scale = Vector2(0.275, 0.275)
-script = SubResource("GDScript_vw4ke")
+[node name="wreckingball" parent="wreckingballs" instance=ExtResource("8_4fj6q")]
+position = Vector2(-280, 15)
+scale = Vector2(0.377323, 0.267278)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
