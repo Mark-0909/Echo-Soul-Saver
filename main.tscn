@@ -340,6 +340,8 @@ label_settings = SubResource("LabelSettings_kkbn2")
 metadata/_edit_use_anchors_ = true
 
 [node name="Gun" parent="Player" instance=ExtResource("4_ahrgt")]
+position = Vector2(0, 4.28571)
+scale = Vector2(0.516942, 0.583676)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1.6, 1.6)

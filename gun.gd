@@ -11,5 +11,7 @@ func _physics_process(delta: float) -> void:
 	
 	if direction > 0:
 		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.position.x = initial_position
 	elif direction < 0:
 		$AnimatedSprite2D.flip_h = false
+		$AnimatedSprite2D.position.x = -90
