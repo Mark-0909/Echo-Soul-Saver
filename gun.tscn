@@ -27,8 +27,8 @@ animations = [{
 script = ExtResource("1_80sby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_c6qbe")
 animation = &"fire"
-offset = Vector2(45, 4.09)
+offset = Vector2(43, 6.09)
 flip_h = true
+flip_v = true
