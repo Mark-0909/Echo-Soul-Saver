@@ -1,19 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xrvpn3e7llv"]
+[gd_scene load_steps=4 format=3 uid="uid://b2xrvpn3e7llv"]
 
 [ext_resource type="Script" path="res://gun.gd" id="1_80sby"]
 [ext_resource type="Texture2D" uid="uid://ccl8uvdybnvr1" path="res://assets/gun.png" id="1_uje63"]
-[ext_resource type="Texture2D" uid="uid://r3lgay8ewfah" path="res://assets/firegun.png" id="2_nj4fx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6qbe"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_nj4fx")
-}],
-"loop": true,
-"name": &"fire",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_uje63")
@@ -27,8 +18,7 @@ animations = [{
 script = ExtResource("1_80sby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_c6qbe")
-animation = &"fire"
-offset = Vector2(45, 4.09)
+animation = &"steady"
+frame_progress = 0.139847
 flip_h = true
