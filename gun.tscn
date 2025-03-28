@@ -9,8 +9,11 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_nj4fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_uje63")
 }],
-"loop": true,
+"loop": false,
 "name": &"fire",
 "speed": 5.0
 }, {
@@ -29,6 +32,7 @@ script = ExtResource("1_80sby")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c6qbe")
 animation = &"fire"
+autoplay = "fire"
 offset = Vector2(43, 6.09)
 flip_h = true
 flip_v = true
