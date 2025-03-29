@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3cn3egllvc14"]
+[gd_scene load_steps=6 format=3 uid="uid://d3cn3egllvc14"]
 
+[ext_resource type="Script" path="res://bullet.gd" id="1_ijisu"]
 [ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="1_vdc5j"]
 [ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="2_34w43"]
 
@@ -25,6 +26,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
 
 [node name="Bullet" type="Area2D"]
+script = ExtResource("1_ijisu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(93, 18)
@@ -38,3 +40,4 @@ rotation = 1.56708
 shape = SubResource("CapsuleShape2D_rcedg")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.504
