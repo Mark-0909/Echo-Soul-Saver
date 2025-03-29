@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bytl78fqyhgqo"]
+[gd_scene load_steps=9 format=3 uid="uid://bytl78fqyhgqo"]
 
 [ext_resource type="Texture2D" uid="uid://ct3hqmv8vem36" path="res://assets/enemy.png" id="1_2cdoc"]
 [ext_resource type="Script" path="res://enemy.gd" id="1_gjuft"]
 [ext_resource type="Texture2D" uid="uid://0emy5w814rsn" path="res://assets/smoke1.png" id="2_khn8k"]
+[ext_resource type="PackedScene" uid="uid://cpfxig37ynkv" path="res://gunenemy.tscn" id="2_ttnjd"]
 [ext_resource type="Texture2D" uid="uid://bkmc2inl0oa2g" path="res://assets/smoke2.png" id="3_8ulpd"]
 [ext_resource type="Texture2D" uid="uid://dyjex44l5dvb8" path="res://assets/smoke3.png" id="4_gmapi"]
 
@@ -45,12 +46,13 @@ height = 62.0591
 scale = Vector2(0.362763, 0.304307)
 script = ExtResource("1_gjuft")
 
+[node name="EnemyGun" parent="." instance=ExtResource("2_ttnjd")]
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.722593, 0.797303)
 sprite_frames = SubResource("SpriteFrames_ss3ro")
-animation = &"dead"
 autoplay = "default"
-frame_progress = 0.833854
+frame_progress = 0.348567
 flip_h = true
 flip_v = true
 

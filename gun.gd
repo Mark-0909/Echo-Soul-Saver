@@ -4,6 +4,7 @@ var initial_position: float
 const BULLET = preload("res://bullet.tscn")
 @onready var muzzle: Marker2D = $Marker2D
 
+
 func _ready() -> void:
 	initial_position = position.x
 	$AnimatedSprite2D.play("steady")
