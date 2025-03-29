@@ -1,12 +1,17 @@
-extends Area2D
+extends CharacterBody2D
 
+var life: int = 3
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Sprite2D.flip_h = true
 	$Sprite2D.flip_v = true
 
+func LoseLife() -> void:
+	life -= 1
+	print("Enemy hit! Remaining life:", life)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	if life <= 0:
+		queue_free()  # Remove enemy when life reaches 0
+
+func _on_body_entered(body: Node2D) -> void:
+	print("Something touched the enemy:", body.name)

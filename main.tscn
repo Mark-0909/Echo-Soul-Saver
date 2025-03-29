@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=17 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://game_manager.gd" id="6_0hxsx"]
 [ext_resource type="PackedScene" uid="uid://d0a5qb2ue5u0h" path="res://spikes.tscn" id="7_hh8me"]
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="8_4fj6q"]
+[ext_resource type="PackedScene" uid="uid://bytl78fqyhgqo" path="res://enemy.tscn" id="10_hy5xp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -416,5 +417,8 @@ position = Vector2(-280, 15)
 scale = Vector2(0.377323, 0.267278)
 
 [node name="Node" type="Node" parent="."]
+
+[node name="Enemy" parent="Node" instance=ExtResource("10_hy5xp")]
+position = Vector2(-326, 10)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
