@@ -25,7 +25,8 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+scale = Vector2(0.637357, 0.768563)
 script = ExtResource("1_ijisu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
