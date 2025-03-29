@@ -35,7 +35,7 @@ flip_h = true
 flip_v = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(86, 15)
+position = Vector2(86, 0)
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 2.0
