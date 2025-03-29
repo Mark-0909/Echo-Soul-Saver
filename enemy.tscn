@@ -50,7 +50,7 @@ scale = Vector2(0.722593, 0.797303)
 sprite_frames = SubResource("SpriteFrames_ss3ro")
 animation = &"dead"
 autoplay = "default"
-frame_progress = 0.834961
+frame_progress = 0.833854
 flip_h = true
 flip_v = true
 
