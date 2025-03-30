@@ -13,7 +13,7 @@ func LoseLife() -> void:
 	if life <= 0:
 		$Sprite2D.play("dead")
 		await get_tree().create_timer(0.2).timeout  
-		queue_free()  # Remove enemy when life reaches 0
+		queue_free() 
 
 func _on_body_entered(body: Node2D) -> void:
 	print("Something touched the enemy:", body.name)
