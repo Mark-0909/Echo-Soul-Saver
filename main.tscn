@@ -428,11 +428,12 @@ scale = Vector2(0.377323, 0.267278)
 [node name="Enemy" type="Node" parent="."]
 
 [node name="Enemy" parent="Enemy" instance=ExtResource("10_hy5xp")]
-position = Vector2(-326, 10)
+position = Vector2(296, -53)
 
 [node name="PlusHeart" type="Node" parent="."]
 
 [node name="PlusLife" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
 position = Vector2(-216, 32)
+scale = Vector2(0.501858, 0.467988)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

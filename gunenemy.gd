@@ -6,6 +6,10 @@ const BULLET = preload("res://bullet.tscn")
 @onready var muzzle: Marker2D = $Marker2D
 @export var is_player_gun: bool = false  
 @onready var enemysprite: AnimatedSprite2D = $"../Sprite2D"
+@export var detection_radius: float = 300.0
+
+var player_in_range: bool = false  
+var is_shooting: bool = false  # Prevents multiple shooting cycles
 
 func _ready() -> void:
 	initial_position = position.x
@@ -15,14 +19,28 @@ func _ready() -> void:
 	await get_tree().process_frame  
 
 	if not is_player_gun:
-		start_shooting_cycle()
+		check_player_distance()  
 
 func _process(delta: float) -> void:
 	if not is_player_gun:
-		var player = get_tree().get_first_node_in_group("Player")  
-		if player:
-			look_at(player.global_position) 
+		check_player_distance()
+
+func check_player_distance() -> void:
+	var player = get_tree().get_first_node_in_group("Player")  
+	if player:
+		var distance_to_player = global_position.distance_to(player.global_position)
+		
+		if distance_to_player <= detection_radius:
+			if not player_in_range:  
+				player_in_range = true  
+				if not is_shooting:
+					start_shooting_cycle()  # Start shooting only once  
+			
+			look_at(player.global_position)  
 			update_gun_orientation()
+		else:
+			player_in_range = false  
+			is_shooting = false  # Stop shooting when out of range
 
 func update_gun_orientation() -> void:
 	rotation_degrees = wrapf(rotation_degrees, 0, 360)  
@@ -37,15 +55,17 @@ func update_gun_orientation() -> void:
 		enemysprite.flip_h = true
 
 func start_shooting_cycle() -> void:
-	while true:
+	is_shooting = true  # Prevent multiple shooting cycles
+	while player_in_range:  
 		await shoot_enemy_gun()
-		await get_tree().create_timer(2.0).timeout  
-		
+		await get_tree().create_timer(2.0).timeout  # Wait before next shot cycle
+
+	is_shooting = false  # Reset when out of range
+
 func shoot_enemy_gun() -> void:
 	print("Enemy fires!") 
 	$AnimatedSprite2D.play("fire")
 
-	
 	shoot_bullet()
 	await get_tree().create_timer(0.3).timeout 
 	shoot_bullet()
