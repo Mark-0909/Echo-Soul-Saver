@@ -37,7 +37,7 @@ script = ExtResource("1_kup86")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tylqm")
 autoplay = "default"
-frame_progress = 0.456497
+frame_progress = 0.36552
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

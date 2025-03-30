@@ -424,6 +424,12 @@ position = Vector2(1242, 85)
 [node name="coin16" parent="Coins" instance=ExtResource("4_gi38t")]
 position = Vector2(1545, 22)
 
+[node name="coin17" parent="Coins" instance=ExtResource("4_gi38t")]
+position = Vector2(2134, 141)
+
+[node name="coin18" parent="Coins" instance=ExtResource("4_gi38t")]
+position = Vector2(2205, 140)
+
 [node name="killzone" parent="." instance=ExtResource("3_eagbo")]
 position = Vector2(126, 38)
 
@@ -610,5 +616,29 @@ position = Vector2(141, 72)
 
 [node name="PlusLife3" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
 position = Vector2(279, 24)
+
+[node name="PlusLife4" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(573, -9)
+
+[node name="PlusLife5" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(742, 9)
+
+[node name="PlusLife6" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(831, 23)
+
+[node name="PlusLife7" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(1201, 105)
+
+[node name="PlusLife8" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(1354, 21)
+
+[node name="PlusLife9" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(1509, 87)
+
+[node name="PlusLife10" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(1705, 88)
+
+[node name="PlusLife11" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(1946, 72)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
