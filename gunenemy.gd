@@ -9,7 +9,7 @@ const BULLET = preload("res://bullet.tscn")
 @export var detection_radius: float = 300.0
 
 var player_in_range: bool = false  
-var is_shooting: bool = false  # Prevents multiple shooting cycles
+var is_shooting: bool = false  
 
 func _ready() -> void:
 	initial_position = position.x
@@ -34,13 +34,13 @@ func check_player_distance() -> void:
 			if not player_in_range:  
 				player_in_range = true  
 				if not is_shooting:
-					start_shooting_cycle()  # Start shooting only once  
+					start_shooting_cycle()  
 			
 			look_at(player.global_position)  
 			update_gun_orientation()
 		else:
 			player_in_range = false  
-			is_shooting = false  # Stop shooting when out of range
+			is_shooting = false  
 
 func update_gun_orientation() -> void:
 	rotation_degrees = wrapf(rotation_degrees, 0, 360)  
@@ -55,12 +55,12 @@ func update_gun_orientation() -> void:
 		enemysprite.flip_h = true
 
 func start_shooting_cycle() -> void:
-	is_shooting = true  # Prevent multiple shooting cycles
+	is_shooting = true  
 	while player_in_range:  
 		await shoot_enemy_gun()
-		await get_tree().create_timer(2.0).timeout  # Wait before next shot cycle
+		await get_tree().create_timer(2.0).timeout  
 
-	is_shooting = false  # Reset when out of range
+	is_shooting = false  
 
 func shoot_enemy_gun() -> void:
 	print("Enemy fires!") 
