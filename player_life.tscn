@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://x6aw3slu6aot"]
 
 [ext_resource type="Script" path="res://player_life.gd" id="1_g33oi"]
-[ext_resource type="Texture2D" uid="uid://d2g52by0wb4yn" path="res://1life.png" id="2_rwaa6"]
-[ext_resource type="Texture2D" uid="uid://b5byxs73y6sk5" path="res://2life.png" id="3_8yfwq"]
-[ext_resource type="Texture2D" uid="uid://10j3gpv35oet" path="res://3life.png" id="4_x5smn"]
-[ext_resource type="Texture2D" uid="uid://cv0dnnn1vks1p" path="res://4life.png" id="5_iymen"]
-[ext_resource type="Texture2D" uid="uid://d4f1k4kjuw6sc" path="res://5life.png" id="6_6blci"]
-[ext_resource type="Texture2D" uid="uid://cs0y64lwncxv3" path="res://6life.png" id="7_eeavp"]
+[ext_resource type="Texture2D" uid="uid://d2g52by0wb4yn" path="res://assets/1life.png" id="2_rwaa6"]
+[ext_resource type="Texture2D" uid="uid://b5byxs73y6sk5" path="res://assets/2life.png" id="3_8yfwq"]
+[ext_resource type="Texture2D" uid="uid://10j3gpv35oet" path="res://assets/3life.png" id="4_x5smn"]
+[ext_resource type="Texture2D" uid="uid://cv0dnnn1vks1p" path="res://assets/4life.png" id="5_iymen"]
+[ext_resource type="Texture2D" uid="uid://d4f1k4kjuw6sc" path="res://assets/5life.png" id="6_6blci"]
+[ext_resource type="Texture2D" uid="uid://cs0y64lwncxv3" path="res://assets/6life.png" id="7_eeavp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nc0xe"]
 animations = [{
@@ -64,5 +64,4 @@ script = ExtResource("1_g33oi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nc0xe")
-animation = &"1life"
 autoplay = "default"

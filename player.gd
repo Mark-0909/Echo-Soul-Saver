@@ -39,23 +39,32 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func PlusHealth() -> void:
+	if player_life >= 6:
+		return
+	if player_life == 5:
+		player_life += 1
+	else:
+		player_life += 2
+	PlayerState()
 
 func MinusHealth() -> void:
 	player_life -= 1
-
+	PlayerState()
+ 
+func PlayerState() -> void:
+	print(player_life)
 	if player_life > 0:
 		match player_life:
-			6: $PlayerLife/AnimatedSprite2D.play("6life")
+			6: $PlayerLife/AnimatedSprite2D.play("default")
 			5: $PlayerLife/AnimatedSprite2D.play("5life")
 			4: $PlayerLife/AnimatedSprite2D.play("4life")
 			3: $PlayerLife/AnimatedSprite2D.play("3life")
 			2: $PlayerLife/AnimatedSprite2D.play("2life")
 			1: $PlayerLife/AnimatedSprite2D.play("1life")
 	else:
-		timer.wait_time = 0.01  # Set the timer to 0.2 seconds
-		timer.start()  # Start the timer with the new duration
+		timer.wait_time = 0.01  
+		timer.start()  
 		if game_manager.has_method("on_player_death"):
 			game_manager.on_player_death()
- 
-
 	

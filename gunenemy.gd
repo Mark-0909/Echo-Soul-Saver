@@ -32,7 +32,7 @@ func update_gun_orientation() -> void:
 		$AnimatedSprite2D.position.x = initial_position
 		enemysprite.flip_h = false
 	else:
-		scale.y = 1  # Normal
+		scale.y = 1  
 		$AnimatedSprite2D.position.x = -initial_position
 		enemysprite.flip_h = true
 

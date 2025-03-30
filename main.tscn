@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=20 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0a5qb2ue5u0h" path="res://spikes.tscn" id="7_hh8me"]
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="8_4fj6q"]
 [ext_resource type="PackedScene" uid="uid://bytl78fqyhgqo" path="res://enemy.tscn" id="10_hy5xp"]
+[ext_resource type="PackedScene" uid="uid://dlmuympuxml47" path="res://plus_life.tscn" id="13_n5wuo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -428,5 +429,10 @@ scale = Vector2(0.377323, 0.267278)
 
 [node name="Enemy" parent="Enemy" instance=ExtResource("10_hy5xp")]
 position = Vector2(-326, 10)
+
+[node name="PlusHeart" type="Node" parent="."]
+
+[node name="PlusLife" parent="PlusHeart" instance=ExtResource("13_n5wuo")]
+position = Vector2(-216, 32)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

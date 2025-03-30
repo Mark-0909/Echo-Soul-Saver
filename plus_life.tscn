@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlmuympuxml47"]
+
+[ext_resource type="Script" path="res://plus_life.gd" id="1_kup86"]
+[ext_resource type="Texture2D" uid="uid://cn37j3nlm1v2t" path="res://assets/plus1.png" id="2_xnwbp"]
+[ext_resource type="Texture2D" uid="uid://cwygg0yqh2u48" path="res://assets/plus2.png" id="3_5f1fb"]
+[ext_resource type="Texture2D" uid="uid://di5yjrlwnjda6" path="res://assets/plus3.png" id="4_i20f7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tylqm"]
+animations = [{
+"frames": [{
+"duration": 0.25,
+"texture": ExtResource("2_xnwbp")
+}, {
+"duration": 0.25,
+"texture": ExtResource("3_5f1fb")
+}, {
+"duration": 0.25,
+"texture": ExtResource("4_i20f7")
+}, {
+"duration": 0.25,
+"texture": ExtResource("3_5f1fb")
+}, {
+"duration": 0.25,
+"texture": ExtResource("2_xnwbp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbx76"]
+
+[node name="PlusLife" type="Area2D"]
+scale = Vector2(0.498863, 0.475628)
+script = ExtResource("1_kup86")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tylqm")
+autoplay = "default"
+frame_progress = 0.0773431
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_lbx76")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

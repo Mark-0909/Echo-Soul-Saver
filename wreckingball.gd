@@ -5,7 +5,8 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"): 
-		print("You died!")
-		timer.start()
-		game_manager._on_timer_timeout()
+		if body.has_method("MinusHealth"):
+			body.MinusHealth()
+			await get_tree().create_timer(0.5).timeout
+		
 		
