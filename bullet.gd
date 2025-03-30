@@ -18,7 +18,11 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if not is_player_bullet and body.is_in_group("Enemy"):
 		return
-
+	
+	if not is_player_bullet and body.is_in_group("Player"):
+		if body.has_method("MinusHealth"):
+			body.MinusHealth()
+	
 	moving = false 
 	set_process(false)  
 

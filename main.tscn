@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=19 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://killzone.tscn" id="3_eagbo"]
 [ext_resource type="PackedScene" uid="uid://b2xrvpn3e7llv" path="res://gun.tscn" id="4_ahrgt"]
 [ext_resource type="PackedScene" uid="uid://cfamekk0e5l8j" path="res://coin.tscn" id="4_gi38t"]
+[ext_resource type="PackedScene" uid="uid://x6aw3slu6aot" path="res://player_life.tscn" id="5_aoxt2"]
 [ext_resource type="Script" path="res://game_manager.gd" id="6_0hxsx"]
 [ext_resource type="PackedScene" uid="uid://d0a5qb2ue5u0h" path="res://spikes.tscn" id="7_hh8me"]
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="8_4fj6q"]
@@ -330,6 +331,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hfa0x")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kkbn2"]
+font_size = 12
 font_color = Color(6.31716e-08, 0.0777424, 0.0608874, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x4on0"]
@@ -352,6 +354,10 @@ tile_set = SubResource("TileSet_2d1in")
 position = Vector2(-395, -53)
 scale = Vector2(0.7, 0.7)
 
+[node name="PlayerLife" parent="Player" instance=ExtResource("5_aoxt2")]
+position = Vector2(-1.42857, -32.8571)
+scale = Vector2(0.592127, 0.647653)
+
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2.5, 2.5)
 limit_bottom = 255
@@ -359,10 +365,10 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="Counter" type="Label" parent="Player"]
-offset_left = -28.5714
-offset_top = -38.5714
-offset_right = 32.4286
-offset_bottom = -15.5714
+offset_left = -24.2857
+offset_top = -31.4286
+offset_right = 36.7143
+offset_bottom = -8.42858
 text = "Coins: 0"
 label_settings = SubResource("LabelSettings_kkbn2")
 metadata/_edit_use_anchors_ = true
@@ -418,9 +424,9 @@ position = Vector2(-169, -2)
 position = Vector2(-280, 15)
 scale = Vector2(0.377323, 0.267278)
 
-[node name="Node" type="Node" parent="."]
+[node name="Enemy" type="Node" parent="."]
 
-[node name="Enemy" parent="Node" instance=ExtResource("10_hy5xp")]
+[node name="Enemy" parent="Enemy" instance=ExtResource("10_hy5xp")]
 position = Vector2(-326, 10)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

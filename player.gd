@@ -3,6 +3,9 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 var player_life: int = 6
+@onready var player_health: Node2D = $PlayerLife
+@onready var game_manager: Node = %gameManager
+@onready var timer: Timer = $"../gameManager/Timer"
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -35,3 +38,24 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func MinusHealth() -> void:
+	player_life -= 1
+
+	if player_life > 0:
+		match player_life:
+			6: $PlayerLife/AnimatedSprite2D.play("6life")
+			5: $PlayerLife/AnimatedSprite2D.play("5life")
+			4: $PlayerLife/AnimatedSprite2D.play("4life")
+			3: $PlayerLife/AnimatedSprite2D.play("3life")
+			2: $PlayerLife/AnimatedSprite2D.play("2life")
+			1: $PlayerLife/AnimatedSprite2D.play("1life")
+	else:
+		timer.wait_time = 0.01  # Set the timer to 0.2 seconds
+		timer.start()  # Start the timer with the new duration
+		if game_manager.has_method("on_player_death"):
+			game_manager.on_player_death()
+ 
+
+	
