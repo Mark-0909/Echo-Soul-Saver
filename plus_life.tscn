@@ -31,13 +31,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_lbx76"]
 
 [node name="PlusLife" type="Area2D"]
-scale = Vector2(0.498863, 0.475628)
+scale = Vector2(0.726393, 0.623512)
 script = ExtResource("1_kup86")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tylqm")
 autoplay = "default"
-frame_progress = 0.0773431
+frame_progress = 0.456497
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

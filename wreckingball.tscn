@@ -119,6 +119,7 @@ _data = {
 }
 
 [node name="wreckingball" type="Area2D"]
+scale = Vector2(0.425776, 0.349613)
 script = ExtResource("1_qp56c")
 
 [node name="rope" type="Sprite2D" parent="."]
