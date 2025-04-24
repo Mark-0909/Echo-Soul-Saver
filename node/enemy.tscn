@@ -59,3 +59,5 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.820563, 1.16018)
 shape = SubResource("CapsuleShape2D_2iijb")
+
+[node name="Marker2D" type="Marker2D" parent="."]
