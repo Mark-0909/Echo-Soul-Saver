@@ -25,11 +25,22 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		if velocity.x == 0:
-			$AnimatedSprite2D.play("idle")
+			if is_ghost:
+				$AnimatedSprite2D.play("ghostidle")
+			else:
+				$AnimatedSprite2D.play("idle")
 		elif velocity.x != 0:
-			$AnimatedSprite2D.play("walk")
+			
+			if is_ghost:
+				$AnimatedSprite2D.play("ghostidle")
+			else:
+				$AnimatedSprite2D.play("walk")
 	else:
-		$AnimatedSprite2D.play("jump")
+		if is_ghost:
+			$AnimatedSprite2D.play("ghostidle")
+		else:
+			$AnimatedSprite2D.play("jump")
+		
 
 	var mouse_x = get_global_mouse_position().x
 	var player_x = global_position.x
@@ -58,13 +69,13 @@ func start_transform() -> void:
 	if not is_ghost:
 		# Transform into ghost
 		$AnimatedSprite2D.play("transform")
-		await get_tree().create_timer(.8).timeout
+		await get_tree().create_timer(.7).timeout
 		$AnimatedSprite2D.play("ghostidle")
 		is_ghost = true
 	else:
 		# Transform back to normal
 		$AnimatedSprite2D.play("untransform")  # <- Create this anim if needed
-		await get_tree().create_timer(.8).timeout
+		await get_tree().create_timer(.7).timeout
 		$AnimatedSprite2D.play("idle")
 		is_ghost = false
 
