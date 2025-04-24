@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=19 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
 [ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhv8mj7yj664" path="res://assets/player/transform6.png" id="12_pf2ql"]
 [ext_resource type="Texture2D" uid="uid://cbayh1yagnrl0" path="res://assets/player/run1.png" id="14_ry0ol"]
 [ext_resource type="Texture2D" uid="uid://tf53sloo64ls" path="res://assets/player/run2.png" id="15_75vdj"]
+[ext_resource type="PackedScene" uid="uid://b2xrvpn3e7llv" path="res://node/gun.tscn" id="15_e43bu"]
 [ext_resource type="Texture2D" uid="uid://lr8qvpjg7bkq" path="res://assets/player/run3.png" id="16_oukyn"]
 [ext_resource type="Texture2D" uid="uid://uxt480ntvpnl" path="res://assets/player/run5.png" id="17_or5pr"]
 
@@ -130,6 +131,10 @@ scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
 animation = &"untransform"
 flip_h = true
+
+[node name="Gun" parent="." instance=ExtResource("15_e43bu")]
+position = Vector2(2.39892, 5.80524)
+scale = Vector2(0.331702, 0.337361)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)

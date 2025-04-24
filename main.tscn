@@ -1,11 +1,10 @@
-[gd_scene load_steps=22 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=21 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
 [ext_resource type="Script" path="res://script/player_life.gd" id="1_xaqab"]
 [ext_resource type="Texture2D" uid="uid://bnus026tmujxp" path="res://assets/tilemap_packed.png" id="2_tfabn"]
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://node/killzone.tscn" id="3_eagbo"]
-[ext_resource type="PackedScene" uid="uid://b2xrvpn3e7llv" path="res://node/gun.tscn" id="4_ahrgt"]
 [ext_resource type="PackedScene" uid="uid://cfamekk0e5l8j" path="res://node/coin.tscn" id="4_gi38t"]
 [ext_resource type="PackedScene" uid="uid://x6aw3slu6aot" path="res://node/player_life.tscn" id="5_aoxt2"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="6_0hxsx"]
@@ -368,10 +367,6 @@ text = "Coins: 0"
 label_settings = SubResource("LabelSettings_kkbn2")
 metadata/_edit_use_anchors_ = true
 
-[node name="Gun" parent="Player" instance=ExtResource("4_ahrgt")]
-position = Vector2(0, 4.28571)
-scale = Vector2(0.516942, 0.583676)
-
 [node name="Coins" type="Node" parent="."]
 
 [node name="coin" parent="Coins" instance=ExtResource("4_gi38t")]
@@ -651,5 +646,7 @@ position = Vector2(2372, 168)
 
 [node name="Finale" parent="." instance=ExtResource("15_4w0n4")]
 position = Vector2(2548, 65)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

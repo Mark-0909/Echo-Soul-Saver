@@ -28,8 +28,6 @@ func _physics_process(delta: float) -> void:
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y: float = Input.get_axis("jump", "down") if is_ghost else 0.0
 
-
-
 	# Animations
 	if direction_x == 0 and direction_y == 0:
 		$AnimatedSprite2D.play("ghostidle" if is_ghost else "idle")
@@ -64,13 +62,41 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-# -- TRANSFORMATION LOGIC --
+func PlusHealth() -> void:
+	if player_life >= 6:
+		return
+	if player_life == 5:
+		player_life += 1
+	else:
+		player_life += 2
+	PlayerState()
+
+func MinusHealth() -> void:
+	player_life -= 1
+	PlayerState()
+ 
+func PlayerState() -> void:
+	print(player_life)
+	if player_life > 0:
+		match player_life:
+			6: $PlayerLife/AnimatedSprite2D.play("default")
+			5: $PlayerLife/AnimatedSprite2D.play("5life")
+			4: $PlayerLife/AnimatedSprite2D.play("4life")
+			3: $PlayerLife/AnimatedSprite2D.play("3life")
+			2: $PlayerLife/AnimatedSprite2D.play("2life")
+			1: $PlayerLife/AnimatedSprite2D.play("1life")
+	else:
+		timer.wait_time = 0.01  
+		timer.start()  
+		if game_manager.has_method("on_player_death"):
+			game_manager.on_player_death()
+	
 func start_transform() -> void:
 	is_transforming = true
 	velocity = Vector2.ZERO
 
 	if not is_ghost:
-		# Transform into ghost
+		# Transform into ghostdddddddddddd
 		$AnimatedSprite2D.play("transform")
 		await get_tree().create_timer(.7).timeout
 		$AnimatedSprite2D.play("ghostidle")
