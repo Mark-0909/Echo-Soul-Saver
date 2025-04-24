@@ -32,7 +32,7 @@ script = ExtResource("1_ijisu")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(93, 18)
 sprite_frames = SubResource("SpriteFrames_2yvtb")
-animation = &"flying"
+animation = &"splash"
 autoplay = "flying"
 offset = Vector2(-91, -17)
 
