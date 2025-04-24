@@ -4,12 +4,17 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
 var player_life: int = 6
-var is_ghost = false
-var is_transforming = false
+var is_ghost: bool = false
+var is_transforming: bool = false
 
 @onready var player_health: Node2D = $PlayerLife
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
+@onready var Health_drain: Timer = $Timer
+
+func _ready() -> void:
+	if is_ghost:
+		Health_drain.start()
 
 func _physics_process(delta: float) -> void:
 	if is_transforming:
@@ -52,8 +57,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction_x * SPEED
 		velocity.y = direction_y * SPEED
 	else:
-		# regular player mode
-		velocity.x = direction_x * SPEED if direction_x else move_toward(velocity.x, 0, SPEED)
+		velocity.x = direction_x * SPEED if direction_x != 0 else move_toward(velocity.x, 0, SPEED)
 
 	# Handle transform input
 	if Input.is_action_just_pressed("transform") and not is_transforming:
@@ -65,10 +69,7 @@ func _physics_process(delta: float) -> void:
 func PlusHealth() -> void:
 	if player_life >= 6:
 		return
-	if player_life == 5:
-		player_life += 1
-	else:
-		player_life += 2
+	player_life += 1 if player_life == 5 else 2
 	PlayerState()
 
 func MinusHealth() -> void:
@@ -96,16 +97,22 @@ func start_transform() -> void:
 	velocity = Vector2.ZERO
 
 	if not is_ghost:
-		# Transform into ghostdddddddddddd
 		$AnimatedSprite2D.play("transform")
-		await get_tree().create_timer(.7).timeout
+		await get_tree().create_timer(0.7).timeout
 		$AnimatedSprite2D.play("ghostidle")
 		is_ghost = true
+		Health_drain.start()  # Start draining when entering ghost
 	else:
-		# Transform back to normal
-		$AnimatedSprite2D.play("untransform")  # <- Create this anim if needed
-		await get_tree().create_timer(.7).timeout
+		$AnimatedSprite2D.play("untransform")
+		await get_tree().create_timer(0.7).timeout
 		$AnimatedSprite2D.play("idle")
 		is_ghost = false
+		Health_drain.stop()   # Stop draining when leaving ghost
 
 	is_transforming = false
+
+
+func _on_timer_timeout() -> void:
+	if is_ghost:
+		MinusHealth()
+		Health_drain.start()
