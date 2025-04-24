@@ -4,7 +4,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
 var player_life: int = 6
-var is_ghost: bool = false
+@export var is_ghost: bool = false
 var is_transforming: bool = false
 
 @onready var player_health: Node2D = $PlayerLife

@@ -23,12 +23,19 @@ func _on_body_entered(body: Node2D) -> void:
 		if body.has_method("MinusHealth"):
 			body.MinusHealth()
 	
+	if not is_player_bullet and body.is_in_group("Player"):
+		# Use optional chaining just in case
+		if "is_ghost" in body and body.is_ghost:
+			print("Player is ghost - bullet passed through")
+			return
+	
 	moving = false 
 	set_process(false)  
-
+	
+	
 	if body.has_method("LoseLife"):
 		body.LoseLife()
-
+	
 	animated_sprite_2d.play("splash")  
 	await get_tree().create_timer(0.1).timeout  
 	queue_free()
