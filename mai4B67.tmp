@@ -73,6 +73,7 @@ sources/0 = SubResource("TileSetAtlasSource_lb0c0")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_65bc6"]
 shader = ExtResource("3_frtqv")
 shader_parameter/is_ghost = false
+shader_parameter/ghost_origin = Vector2(0, 0)
 shader_parameter/spread_radius = 200.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hfa0x"]

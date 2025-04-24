@@ -57,7 +57,7 @@ script = ExtResource("1_4ibc8")
 sprite_frames = SubResource("SpriteFrames_34hr0")
 animation = &"create"
 autoplay = "default"
-frame_progress = 0.62563
+frame_progress = 0.0184128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.6186, 2.36502)
