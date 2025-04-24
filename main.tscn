@@ -354,7 +354,7 @@ position = Vector2(-1.42857, -32.8571)
 scale = Vector2(0.592127, 0.647653)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(3.485, 3.485)
 limit_bottom = 255
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0

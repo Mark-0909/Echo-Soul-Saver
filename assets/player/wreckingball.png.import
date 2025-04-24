@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvi1453wk13qn"
-path="res://.godot/imported/creation7.png-52cbe8ca80994edca4851bbb9f09882f.ctex"
+uid="uid://dyrr6lr7gbtwm"
+path="res://.godot/imported/wreckingball.png-f5b153e2ad198d524c2795f8e2a349fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/creation7.png"
-dest_files=["res://.godot/imported/creation7.png-52cbe8ca80994edca4851bbb9f09882f.ctex"]
+source_file="res://assets/player/wreckingball.png"
+dest_files=["res://.godot/imported/wreckingball.png-f5b153e2ad198d524c2795f8e2a349fe.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://script/wreckingball.gd" id="1_qp56c"]
 [ext_resource type="Texture2D" uid="uid://c4uuvownvh8sv" path="res://assets/rope.png" id="1_v7ig0"]
-[ext_resource type="Texture2D" uid="uid://dyrr6lr7gbtwm" path="res://assets/wreckingball.png" id="2_010ae"]
+[ext_resource type="Texture2D" uid="uid://dyrr6lr7gbtwm" path="res://assets/player/wreckingball.png" id="2_010ae"]
 [ext_resource type="Texture2D" uid="uid://cxdelb3shwmot" path="res://assets/circler.png" id="3_rk4fm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hrqk7"]

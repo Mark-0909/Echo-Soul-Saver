@@ -58,13 +58,13 @@ func start_transform() -> void:
 	if not is_ghost:
 		# Transform into ghost
 		$AnimatedSprite2D.play("transform")
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(.8).timeout
 		$AnimatedSprite2D.play("ghostidle")
 		is_ghost = true
 	else:
 		# Transform back to normal
 		$AnimatedSprite2D.play("untransform")  # <- Create this anim if needed
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(.8).timeout
 		$AnimatedSprite2D.play("idle")
 		is_ghost = false
 
