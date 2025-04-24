@@ -1,7 +1,7 @@
 extends Node2D
 
 var initial_position: float  
-const BULLET = preload("res://bullet.tscn")
+const BULLET = preload("res://node/bullet.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
 @export var is_player_gun: bool = false  

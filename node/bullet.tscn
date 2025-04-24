@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3cn3egllvc14"]
+[gd_scene load_steps=6 format=3 uid="uid://ceihqhnfpxx51"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_ijisu"]
-[ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="1_vdc5j"]
-[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="2_34w43"]
+[ext_resource type="Script" path="res://script/bullet.gd" id="1_8rtx3"]
+[ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="2_igl2h"]
+[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="3_mr3tm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_vdc5j")
+"texture": ExtResource("2_igl2h")
 }],
 "loop": true,
 "name": &"flying",
@@ -16,7 +16,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 0.5,
-"texture": ExtResource("2_34w43")
+"texture": ExtResource("3_mr3tm")
 }],
 "loop": true,
 "name": &"splash",
@@ -27,7 +27,7 @@ animations = [{
 
 [node name="Bullet" type="Area2D" groups=["Bullet"]]
 scale = Vector2(0.397357, 0.488563)
-script = ExtResource("1_ijisu")
+script = ExtResource("1_8rtx3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(93, 18)

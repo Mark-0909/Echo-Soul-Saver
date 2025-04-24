@@ -1,0 +1,137 @@
+[gd_scene load_steps=21 format=3 uid="uid://vsnp2ticy0j8"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
+[ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
+[ext_resource type="Texture2D" uid="uid://coovne67lxa6y" path="res://assets/player/ghostidle2.png" id="3_ta57n"]
+[ext_resource type="Texture2D" uid="uid://b7jsxoe66mbyq" path="res://assets/player/ghostidle3.png" id="4_sc1en"]
+[ext_resource type="Texture2D" uid="uid://ct8ycr7nyewxg" path="res://assets/player/creation1.png" id="4_sxj5h"]
+[ext_resource type="Texture2D" uid="uid://b6wfhssjssf31" path="res://assets/player/creation2.png" id="5_r8ktv"]
+[ext_resource type="Texture2D" uid="uid://cna5ux8dxqech" path="res://assets/player/creation3.png" id="6_l43kk"]
+[ext_resource type="Texture2D" uid="uid://xojsa5y2g1r4" path="res://assets/player/creation4.png" id="7_j7omk"]
+[ext_resource type="Texture2D" uid="uid://04f7srixi238" path="res://assets/player/creation5.png" id="8_gtxjg"]
+[ext_resource type="Texture2D" uid="uid://bosfqtlo455o0" path="res://assets/player/creation5.1.png" id="9_x0oog"]
+[ext_resource type="Texture2D" uid="uid://bxk38e6bftinv" path="res://assets/player/creation6.png" id="10_3o4gv"]
+[ext_resource type="Texture2D" uid="uid://dvi1453wk13qn" path="res://assets/player/creation7.png" id="11_sth7j"]
+[ext_resource type="Texture2D" uid="uid://b0ph5m4mjyv3p" path="res://assets/player/creation8.png" id="12_2wn27"]
+[ext_resource type="Texture2D" uid="uid://cbayh1yagnrl0" path="res://assets/player/run1.png" id="14_ry0ol"]
+[ext_resource type="Texture2D" uid="uid://tf53sloo64ls" path="res://assets/player/run2.png" id="15_75vdj"]
+[ext_resource type="Texture2D" uid="uid://lr8qvpjg7bkq" path="res://assets/player/run3.png" id="16_oukyn"]
+[ext_resource type="Texture2D" uid="uid://uxt480ntvpnl" path="res://assets/player/run5.png" id="17_or5pr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4a28"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5seh4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ta57n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sc1en")
+}],
+"loop": true,
+"name": &"ghostidle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_or5pr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_75vdj")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_sxj5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r8ktv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l43kk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j7omk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_gtxjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_x0oog")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3o4gv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sth7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2wn27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5seh4")
+}],
+"loop": true,
+"name": &"transform",
+"speed": 9.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"untransform",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ry0ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_75vdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_oukyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_75vdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_or5pr")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7luo"]
+radius = 14.0
+height = 34.0
+
+[sub_resource type="Gradient" id="Gradient_cxaek"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[node name="Node2D" type="CharacterBody2D" groups=["Player"]]
+scale = Vector2(0.83371, 0.861291)
+script = ExtResource("1_k0vyt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.450521, 0.465169)
+sprite_frames = SubResource("SpriteFrames_w4a28")
+animation = &"transform"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_q7luo")
+
+[node name="DustTrail" type="Line2D" parent="."]
+default_color = Color(0.451887, 0.313576, 0.207261, 1)
+gradient = SubResource("Gradient_cxaek")
