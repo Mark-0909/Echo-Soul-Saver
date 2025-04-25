@@ -120,12 +120,14 @@ func start_transform() -> void:
 		$AnimatedSprite2D.play("ghostidle")
 		is_ghost = true
 		Health_drain.start()
+		$Gun.is_ghost_bullet = true
 	else:
 		$AnimatedSprite2D.play("untransform")
 		await get_tree().create_timer(0.7).timeout
 		$AnimatedSprite2D.play("idle")
 		is_ghost = false
 		Health_drain.stop()
+		$Gun.is_ghost_bullet = false
 
 	# Ensure shader parameters are updated
 	terrain.material.set_shader_parameter("is_ghost", is_ghost)

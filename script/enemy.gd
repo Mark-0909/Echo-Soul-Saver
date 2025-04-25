@@ -18,6 +18,3 @@ func LoseLife() -> void:
 		queue_free()
 		get_tree().root.add_child(soul)
 		soul.global_position = soul_location.global_position
-
-func _on_body_entered(body: Node2D) -> void:
-	print("Something touched the enemy:", body.name)
