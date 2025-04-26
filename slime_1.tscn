@@ -1,7 +1,78 @@
-[gd_scene format=3 uid="uid://csr0mncy06frk"]
+[gd_scene load_steps=12 format=3 uid="uid://csr0mncy06frk"]
+
+[ext_resource type="Texture2D" uid="uid://c0uqtb7cji86j" path="res://assets/enemies/slime1/Slime1_Walk_body.png" id="1_43hji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssqsw"]
+atlas = ExtResource("1_43hji")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3irl"]
+atlas = ExtResource("1_43hji")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuah8"]
+atlas = ExtResource("1_43hji")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n775y"]
+atlas = ExtResource("1_43hji")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ejuk"]
+atlas = ExtResource("1_43hji")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k6mx"]
+atlas = ExtResource("1_43hji")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1557i"]
+atlas = ExtResource("1_43hji")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c17m"]
+atlas = ExtResource("1_43hji")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2keql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssqsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3irl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuah8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n775y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ejuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k6mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1557i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c17m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jx68e"]
 
 [node name="Slime1" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2keql")
+frame_progress = 0.849099
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jx68e")
