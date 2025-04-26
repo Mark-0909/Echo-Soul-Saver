@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceihqhnfpxx51"]
+[gd_scene load_steps=6 format=3 uid="uid://ceihqhnfpxx51"]
 
 [ext_resource type="Script" path="res://script/bullet.gd" id="1_8rtx3"]
 [ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="2_igl2h"]
-[ext_resource type="Texture2D" uid="uid://b0qdebpx3ote" path="res://assets/soul/soulcreate5.png" id="3_32kxs"]
 [ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="3_mr3tm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
@@ -13,14 +12,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"flying",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_32kxs")
-}],
-"loop": true,
-"name": &"ghostbullet",
 "speed": 5.0
 }, {
 "frames": [{
@@ -38,10 +29,10 @@ animations = [{
 scale = Vector2(0.397357, 0.488563)
 script = ExtResource("1_8rtx3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Bullet"]]
 position = Vector2(93, 18)
 sprite_frames = SubResource("SpriteFrames_2yvtb")
-animation = &"ghostbullet"
+animation = &"flying"
 autoplay = "flying"
 offset = Vector2(-91, -17)
 

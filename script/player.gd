@@ -68,16 +68,21 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction_x * SPEED
 		velocity.y = direction_y * SPEED
 	else:
-		velocity.x = direction_x * SPEED if direction_x != 0 else move_toward(velocity.x, 0, SPEED)
+		if direction_x != 0:
+			velocity.x = direction_x * SPEED
+		else:
+		# Slow down naturally instead of forcibly snapping
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)  # Smooth deceleration
+
 
 	# Check for transform button press and trigger transformation
 	if Input.is_action_just_pressed("transform") and not is_transforming:
 		print("Transform button pressed!")  # Debug print
 		await start_transform()
 
-	# Update ghost_origin smoothly (use a larger interpolation factor)
+	# Update ghost_origin smoothly
 	if is_ghost:
-		ghost_origin = ghost_origin.lerp(target_ghost_origin, 0.1)  # Adjust this for a more noticeable effect
+		ghost_origin = ghost_origin.lerp(target_ghost_origin, 0.1)
 
 		# Update the shader parameter for ghost_origin
 		terrain.material.set_shader_parameter("ghost_origin", ghost_origin)
@@ -129,7 +134,7 @@ func start_transform() -> void:
 		Health_drain.stop()
 		$Gun.is_ghost_bullet = false
 
-	# Ensure shader parameters are updated
+	# Update shader parameters
 	terrain.material.set_shader_parameter("is_ghost", is_ghost)
 	terrain.material.set_shader_parameter("spread_radius", spread_radius)
 
@@ -142,3 +147,8 @@ func _on_timer_timeout() -> void:
 	if is_ghost:
 		MinusHealth()
 		Health_drain.start()
+
+# --- New knockback function here ---
+func apply_knockback(source_position: Vector2) -> void:
+	var knockback_direction = (global_position - source_position).normalized()
+	velocity += knockback_direction * 500

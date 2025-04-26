@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bytl78fqyhgqo" path="res://node/enemy.tscn" id="10_hy5xp"]
 [ext_resource type="PackedScene" uid="uid://dlmuympuxml47" path="res://node/plus_life.tscn" id="13_n5wuo"]
 [ext_resource type="PackedScene" uid="uid://t82kjk8h0m72" path="res://node/finale.tscn" id="15_4w0n4"]
-[ext_resource type="PackedScene" uid="uid://csr0mncy06frk" path="res://node/slime_1.tscn" id="16_ntarm"]
+[ext_resource type="PackedScene" uid="uid://b4q3iw1aqb3xx" path="res://node/slime1.tscn" id="16_723np"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -647,10 +647,9 @@ position = Vector2(2548, 65)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Slime1" parent="." instance=ExtResource("16_ntarm")]
-position = Vector2(-243, -24)
+[node name="slimes" type="Node" parent="."]
 
-[node name="Slime2" parent="." instance=ExtResource("16_ntarm")]
-position = Vector2(-422, 40)
+[node name="Slime1" parent="." instance=ExtResource("16_723np")]
+position = Vector2(-241, -25)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
