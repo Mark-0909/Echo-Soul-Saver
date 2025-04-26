@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://csr0mncy06frk"]
+[gd_scene load_steps=13 format=3 uid="uid://csr0mncy06frk"]
 
 [ext_resource type="Texture2D" uid="uid://c0uqtb7cji86j" path="res://assets/enemies/slime1/Slime1_Walk_body.png" id="1_43hji"]
+[ext_resource type="Script" path="res://script/slime_1.gd" id="1_a23vc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ssqsw"]
 atlas = ExtResource("1_43hji")
@@ -68,11 +69,25 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jx68e"]
 
-[node name="Slime1" type="Node2D"]
+[node name="Slime1" type="Area2D"]
+script = ExtResource("1_a23vc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2keql")
-frame_progress = 0.849099
+frame_progress = 0.0127243
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jx68e")
+
+[node name="WallRayCast" type="RayCast2D" parent="."]
+position = Vector2(-12, 7.45058e-09)
+rotation = -4.7065
+scale = Vector2(1.02339, 0.196735)
+target_position = Vector2(-0.211893, 24.9991)
+
+[node name="GroundRayCast" type="RayCast2D" parent="."]
+position = Vector2(-14, 7)
+rotation = -0.0106161
+scale = Vector2(0.487561, 0.308663)
+target_position = Vector2(-0.211893, 24.9991)
