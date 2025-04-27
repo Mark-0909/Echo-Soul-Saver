@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=22 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Script" path="res://script/plant_3_gun.gd" id="1_646ge"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xhi861s4obd6" path="res://node/plant2.tscn" id="12_shb4y"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="12_x6brw"]
 [ext_resource type="PackedScene" uid="uid://l26ojmvqlmrv" path="res://node/plant3.tscn" id="13_woe75"]
+[ext_resource type="PackedScene" uid="uid://cw8m0vhwjsiy8" path="res://node/ghost.tscn" id="14_toc53"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -293,5 +294,8 @@ position = Vector2(1403, -363)
 
 [node name="Plant3" parent="." instance=ExtResource("13_woe75")]
 position = Vector2(1959, -324)
+
+[node name="Ghost" parent="." instance=ExtResource("14_toc53")]
+position = Vector2(1597, -313)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://iqlad1ouw84i"]
+
+[node name="ghostGun" type="Node2D"]
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(86, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0

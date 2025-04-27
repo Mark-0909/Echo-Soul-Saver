@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://3xih86e1b6tg"]
+
+[ext_resource type="Script" path="res://ghostbullet.gd" id="1_bhp5l"]
+[ext_resource type="Texture2D" uid="uid://kpltll0rdfcr" path="res://assets/soul/soul2.png" id="2_bwmnj"]
+[ext_resource type="Texture2D" uid="uid://bj77g4xach6d2" path="res://assets/soul/soul1.png" id="3_3e3hc"]
+[ext_resource type="Texture2D" uid="uid://cbfey5v7cwhe4" path="res://assets/soul/soul3.png" id="4_dd8h1"]
+[ext_resource type="Texture2D" uid="uid://b0qdebpx3ote" path="res://assets/soul/soulcreate5.png" id="5_srmlq"]
+[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="6_bumvq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bwmnj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e3hc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dd8h1")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_srmlq")
+}],
+"loop": true,
+"name": &"ghostbullet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("6_bumvq")
+}],
+"loop": true,
+"name": &"splash",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
+
+[node name="GhostBullet" type="Area2D" groups=["GhostBullet"]]
+scale = Vector2(0.397357, 0.488563)
+script = ExtResource("1_bhp5l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["GhostBullet"]]
+position = Vector2(32.7162, 6.14046)
+scale = Vector2(0.367254, 0.306049)
+sprite_frames = SubResource("SpriteFrames_2yvtb")
+animation = &"flying"
+autoplay = "flying"
+offset = Vector2(-91, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.56708
+shape = SubResource("CapsuleShape2D_rcedg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.504
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
