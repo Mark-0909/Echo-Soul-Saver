@@ -45,6 +45,26 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gw5ji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p5jmk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_16plm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l8sqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_smc3r")
+}],
+"loop": true,
+"name": &"disperse",
+"speed": 9.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ausk"]
@@ -55,9 +75,9 @@ script = ExtResource("1_4ibc8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_34hr0")
-animation = &"create"
+animation = &"disperse"
 autoplay = "default"
-frame_progress = 0.0184128
+frame_progress = 0.361092
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.6186, 2.36502)

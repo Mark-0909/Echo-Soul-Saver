@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=3 uid="uid://ba8wkolug37rk"]
+
+[ext_resource type="Script" path="res://script/forestspirit.gd" id="1_c4w2k"]
+[ext_resource type="Texture2D" uid="uid://dkptd8jwyhf7n" path="res://assets/forestspirt/TheForestSpirit_Full-Spritesheet.png" id="2_ft3ii"]
+[ext_resource type="PackedScene" uid="uid://cpfxig37ynkv" path="res://node/gunenemy.tscn" id="2_re7v7"]
+[ext_resource type="Texture2D" uid="uid://0emy5w814rsn" path="res://assets/smoke1.png" id="3_2xoh5"]
+[ext_resource type="Texture2D" uid="uid://bkmc2inl0oa2g" path="res://assets/smoke2.png" id="4_h47hk"]
+[ext_resource type="Texture2D" uid="uid://dyjex44l5dvb8" path="res://assets/smoke3.png" id="5_x2e4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1gl"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(336, 0, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc8mu"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(224, 0, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4padx"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(0, 116, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vlrt"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(56, 116, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4kye"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(112, 116, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye11v"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(168, 116, 56, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8v6g"]
+atlas = ExtResource("2_ft3ii")
+region = Rect2(224, 116, 56, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ss3ro"]
+animations = [{
+"frames": [{
+"duration": 0.25,
+"texture": ExtResource("3_2xoh5")
+}, {
+"duration": 0.25,
+"texture": ExtResource("4_h47hk")
+}, {
+"duration": 0.25,
+"texture": ExtResource("5_x2e4r")
+}, {
+"duration": 0.25,
+"texture": ExtResource("4_h47hk")
+}, {
+"duration": 0.25,
+"texture": ExtResource("3_2xoh5")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr1gl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc8mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4padx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vlrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4kye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye11v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8v6g")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2iijb"]
+radius = 31.0295
+height = 62.0591
+
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy", "Physical"]]
+scale = Vector2(0.362763, 0.304307)
+script = ExtResource("1_c4w2k")
+
+[node name="EnemyGun" parent="." instance=ExtResource("2_re7v7")]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.52588e-05, -6.57231)
+scale = Vector2(2.5188, 3.07973)
+sprite_frames = SubResource("SpriteFrames_ss3ro")
+animation = &"dead"
+autoplay = "default"
+frame_progress = 0.676598
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.436426, 1.16018)
+shape = SubResource("CapsuleShape2D_2iijb")
+
+[node name="Marker2D" type="Marker2D" parent="."]

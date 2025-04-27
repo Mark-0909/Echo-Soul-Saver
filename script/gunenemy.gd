@@ -13,8 +13,7 @@ var is_shooting: bool = false
 
 func _ready() -> void:
 	initial_position = position.x
-	$AnimatedSprite2D.play("steady")
-	$AnimatedSprite2D.flip_v = false
+
 	
 	await get_tree().process_frame  
 
@@ -47,11 +46,11 @@ func update_gun_orientation() -> void:
 
 	if rotation_degrees > 90 and rotation_degrees < 270:
 		scale.y = -1  
-		$AnimatedSprite2D.position.x = initial_position
+		
 		enemysprite.flip_h = false
 	else:
 		scale.y = 1  
-		$AnimatedSprite2D.position.x = -initial_position
+
 		enemysprite.flip_h = true
 
 func start_shooting_cycle() -> void:
@@ -64,7 +63,7 @@ func start_shooting_cycle() -> void:
 
 func shoot_enemy_gun() -> void:
 	print("Enemy fires!") 
-	$AnimatedSprite2D.play("fire")
+	
 
 	shoot_bullet()
 	await get_tree().create_timer(0.3).timeout 
@@ -73,7 +72,7 @@ func shoot_enemy_gun() -> void:
 	shoot_bullet()
 
 	await get_tree().create_timer(0.5).timeout  
-	$AnimatedSprite2D.play("steady")
+
 
 func shoot_bullet() -> void:
 	var bullet_instance = BULLET.instantiate()

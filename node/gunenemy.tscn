@@ -1,38 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpfxig37ynkv"]
+[gd_scene load_steps=2 format=3 uid="uid://cpfxig37ynkv"]
 
 [ext_resource type="Script" path="res://script/gunenemy.gd" id="1_qdcuy"]
-[ext_resource type="Texture2D" uid="uid://r3lgay8ewfah" path="res://assets/firegun.png" id="2_kdwh3"]
-[ext_resource type="Texture2D" uid="uid://ccl8uvdybnvr1" path="res://assets/gun.png" id="3_roxon"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c6qbe"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_kdwh3")
-}],
-"loop": false,
-"name": &"fire",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_roxon")
-}],
-"loop": true,
-"name": &"steady",
-"speed": 5.0
-}]
 
 [node name="EnemyGun" type="Node2D"]
 script = ExtResource("1_qdcuy")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_c6qbe")
-animation = &"fire"
-autoplay = "fire"
-offset = Vector2(43, 6.09)
-flip_h = true
-flip_v = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(86, 0)
