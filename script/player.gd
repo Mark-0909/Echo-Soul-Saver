@@ -11,7 +11,7 @@ var is_transforming: bool = false
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
 @onready var Health_drain: Timer = $Timer
-@onready var terrain: TileMapLayer = $"../terrain"
+@onready var terrain: TileMapLayer = $"../terrain2"
 
 const TERRAIN = preload("res://shader/terrain.gdshader")
 

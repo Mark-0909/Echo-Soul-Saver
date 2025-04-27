@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 35.0
+@export var speed: float = 45.0
 var direction: Vector2 = Vector2.LEFT
 var is_attacking: bool = false
 var Health = 3
