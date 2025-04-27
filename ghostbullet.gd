@@ -15,13 +15,15 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Player"):
 		return
-	if body.is_in_group("Player") and body.get("is_ghost") == true:
-		if body.has_method("MinusHealth"):
-			body.MinusHealth()
-	elif body.is_in_group("Player") and body.get("is_ghost") == false:
-		return
+	elif body.is_in_group("Enemy"):
+		if body.is_in_group("Physical"):
+			return
+		else:
+			if body.has_method("LoseLife"):
+				body.LoseLife()
+		
 	moving = false 
 	set_process(false)  
 	animated_sprite_2d.play("splash")  

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://3xih86e1b6tg"]
 
-[ext_resource type="Script" path="res://ghostbullet.gd" id="1_bhp5l"]
+[ext_resource type="Script" path="res://ghostbulletenemy.gd" id="1_aql6r"]
 [ext_resource type="Texture2D" uid="uid://kpltll0rdfcr" path="res://assets/soul/soul2.png" id="2_bwmnj"]
 [ext_resource type="Texture2D" uid="uid://bj77g4xach6d2" path="res://assets/soul/soul1.png" id="3_3e3hc"]
 [ext_resource type="Texture2D" uid="uid://cbfey5v7cwhe4" path="res://assets/soul/soul3.png" id="4_dd8h1"]
@@ -44,8 +44,7 @@ animations = [{
 
 [node name="GhostBulletEnemy" type="Area2D" groups=["GhostBullet"]]
 scale = Vector2(0.397357, 0.488563)
-script = ExtResource("1_bhp5l")
-is_ghost_bullet = false
+script = ExtResource("1_aql6r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["GhostBullet"]]
 position = Vector2(32.7162, 6.14046)
