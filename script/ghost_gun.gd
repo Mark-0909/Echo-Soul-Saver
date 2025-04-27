@@ -78,7 +78,6 @@ func shoot_bullet() -> void:
 	enemysprite.play("attack")
 	await get_tree().create_timer(.3).timeout
 	var bullet_instance = BULLET.instantiate()
-	bullet_instance.is_player_bullet = false
 	get_tree().root.add_child(bullet_instance)
 	bullet_instance.global_position = muzzle.global_position
 	bullet_instance.rotation = rotation

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca7cit1n6ywgy"]
+
+[ext_resource type="Script" path="res://script/bulletplayer.gd" id="1_ah3e6"]
+[ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="2_d2h7t"]
+[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="3_32v5o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_d2h7t")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_32v5o")
+}],
+"loop": true,
+"name": &"splash",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
+
+[node name="Bullet" type="Area2D" groups=["Bullet"]]
+scale = Vector2(0.397357, 0.488563)
+script = ExtResource("1_ah3e6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Bullet"]]
+position = Vector2(93, 18)
+sprite_frames = SubResource("SpriteFrames_2yvtb")
+animation = &"flying"
+autoplay = "flying"
+offset = Vector2(-91, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.56708
+shape = SubResource("CapsuleShape2D_rcedg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.504
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

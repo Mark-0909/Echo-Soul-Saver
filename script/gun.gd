@@ -1,6 +1,6 @@
 extends Node2D
 
-const BULLET = preload("res://node/bullet.tscn")
+const BULLET = preload("res://node/bulletplayer.tscn")
 const GHOSTBULLET = preload("res://node/ghostbullet.tscn")
 @onready var muzzle: Marker2D = $Marker2D
 
@@ -31,7 +31,10 @@ func _process(delta: float) -> void:
 		animated_sprite.position.x = initial_position  # Reset position
 	
 	if Input.is_action_just_pressed("attack"):
-		animated_sprite.play("fire")
+		if is_ghost_bullet:
+			animated_sprite.play("cicle")
+		else:
+			animated_sprite.play("fire")
 		shoot_bullet()
 		await animated_sprite.animation_finished
 		animated_sprite.play("steady")

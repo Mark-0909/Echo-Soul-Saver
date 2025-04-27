@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("ghostidle" if is_ghost else "idle")
 	else:
 		if is_ghost:
-			$AnimatedSprite2D.play("ghostidle")
+			$AnimatedSprite2D.play("ghostwalk")  # <- I assume you want ghost **walking** animation, not idle
 		elif is_on_floor():
 			$AnimatedSprite2D.play("walk")
 		else:
@@ -126,6 +126,10 @@ func start_transform() -> void:
 		is_ghost = true
 		Health_drain.start()
 		$Gun.is_ghost_bullet = true
+		if $Gun.has_node("AnimatedSprite2D"):
+				$Gun.get_node("AnimatedSprite2D").play("create_circle")
+				await get_tree().create_timer(0.7).timeout
+				$Gun.get_node("AnimatedSprite2D").play("circle")
 	else:
 		$AnimatedSprite2D.play("untransform")
 		await get_tree().create_timer(0.7).timeout

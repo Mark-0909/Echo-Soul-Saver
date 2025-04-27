@@ -15,20 +15,13 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if body.is_in_group("Physical") and body.is_in_group("Enemy") and is_ghost_bullet and is_player_bullet:
+	if body.is_in_group("Enemy"):
 		return
-	if body.is_in_group("Player") and is_player_bullet and is_ghost_bullet:
+	if body.is_in_group("Player") and body.get("is_ghost") == true:
+		if body.has_method("MinusHealth"):
+			body.MinusHealth()
+	elif body.is_in_group("Player") and body.get("is_ghost") == false:
 		return
-		
-	if body.is_in_group("Ghost") and body.is_in_group("Enemy") and is_ghost_bullet and is_player_bullet:
-		if body.is_in_group("Enemy"):
-			if body.is_in_group("Ghost"):
-				print("Enemy is a ghost — bullet passed through")
-				return  # Ignore hitting ghost enemies
-			
-			if body.has_method("LoseLife"):
-				body.LoseLife()
-	# Handle bullet impact visuals
 	moving = false 
 	set_process(false)  
 	animated_sprite_2d.play("splash")  

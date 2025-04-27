@@ -42,9 +42,10 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
 
-[node name="GhostBullet" type="Area2D" groups=["GhostBullet"]]
+[node name="GhostBulletEnemy" type="Area2D" groups=["GhostBullet"]]
 scale = Vector2(0.397357, 0.488563)
 script = ExtResource("1_bhp5l")
+is_ghost_bullet = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["GhostBullet"]]
 position = Vector2(32.7162, 6.14046)

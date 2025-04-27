@@ -1,11 +1,76 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2xrvpn3e7llv"]
+[gd_scene load_steps=18 format=3 uid="uid://b2xrvpn3e7llv"]
 
 [ext_resource type="Script" path="res://script/gun.gd" id="1_80sby"]
 [ext_resource type="Texture2D" uid="uid://ccl8uvdybnvr1" path="res://assets/gun.png" id="1_uje63"]
+[ext_resource type="Texture2D" uid="uid://cahq6i67i1kxi" path="res://assets/circle/circle14.png" id="2_goadw"]
 [ext_resource type="Texture2D" uid="uid://r3lgay8ewfah" path="res://assets/firegun.png" id="2_nj4fx"]
+[ext_resource type="Texture2D" uid="uid://dtcmb4kxxsj4" path="res://assets/circle/circle2.png" id="3_psfym"]
+[ext_resource type="Texture2D" uid="uid://5f3airv4avuo" path="res://assets/circle/circle3.png" id="4_lroc3"]
+[ext_resource type="Texture2D" uid="uid://c4dmkx518etko" path="res://assets/circle/circle4.png" id="5_gpsds"]
+[ext_resource type="Texture2D" uid="uid://bwpg5wk27vskh" path="res://assets/circle/circle5.png" id="6_0sc02"]
+[ext_resource type="Texture2D" uid="uid://h4sxanspwkt1" path="res://assets/circle/circle6.png" id="7_ecyc5"]
+[ext_resource type="Texture2D" uid="uid://basnwma7iaptl" path="res://assets/circle/circle7.png" id="8_7lbqc"]
+[ext_resource type="Texture2D" uid="uid://b105chxtgrep7" path="res://assets/circle/circle8.png" id="9_6qw0c"]
+[ext_resource type="Texture2D" uid="uid://b0ay6v00gc5xu" path="res://assets/circle/circle9.png" id="10_esnyu"]
+[ext_resource type="Texture2D" uid="uid://da6lrjbk3pcu" path="res://assets/circle/circle10.png" id="11_nw3oq"]
+[ext_resource type="Texture2D" uid="uid://drnjidttvucxb" path="res://assets/circle/circle11.png" id="12_s1v4x"]
+[ext_resource type="Texture2D" uid="uid://dl2rm4ngmv4rn" path="res://assets/circle/circle12.png" id="13_q0rjd"]
+[ext_resource type="Texture2D" uid="uid://28dij13w3cqs" path="res://assets/circle/circle13.png" id="14_4ae4g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c6qbe"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_goadw")
+}],
+"loop": true,
+"name": &"circle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_psfym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lroc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gpsds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0sc02")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ecyc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7lbqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6qw0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_esnyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nw3oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s1v4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_q0rjd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_4ae4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_goadw")
+}],
+"loop": true,
+"name": &"create_circle",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_nj4fx")
@@ -27,6 +92,7 @@ animations = [{
 script = ExtResource("1_80sby")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.826611, 0.858682)
 sprite_frames = SubResource("SpriteFrames_c6qbe")
 animation = &"fire"
 autoplay = "fire"
