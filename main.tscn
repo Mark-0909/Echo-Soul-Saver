@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=21 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
+[ext_resource type="Script" path="res://script/plant_3_gun.gd" id="1_646ge"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
-[ext_resource type="Script" path="res://script/player_life.gd" id="1_xaqab"]
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://node/killzone.tscn" id="3_eagbo"]
 [ext_resource type="Shader" path="res://shader/terrain.gdshader" id="3_frtqv"]
 [ext_resource type="Texture2D" uid="uid://4f4r4p5imhed" path="res://assets/cavesofgallet_tiles.png" id="5_888uf"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bsbve1omngsfu" path="res://node/shrine.tscn" id="10_qu2g0"]
 [ext_resource type="PackedScene" uid="uid://xhi861s4obd6" path="res://node/plant2.tscn" id="12_shb4y"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="12_x6brw"]
+[ext_resource type="PackedScene" uid="uid://l26ojmvqlmrv" path="res://node/plant3.tscn" id="13_woe75"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -219,7 +220,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t1107")
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_xaqab")
+script = ExtResource("1_646ge")
 metadata/_edit_vertical_guides_ = [-710.0]
 
 [node name="background" type="TileMapLayer" parent="." groups=["Background"]]
@@ -289,5 +290,8 @@ position = Vector2(1502, -313)
 
 [node name="Plant2" parent="." instance=ExtResource("12_shb4y")]
 position = Vector2(1403, -363)
+
+[node name="Plant3" parent="." instance=ExtResource("13_woe75")]
+position = Vector2(1959, -324)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

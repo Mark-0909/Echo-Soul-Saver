@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cknes3gttxnff"]
 
-[node name="EnemyGun" type="Node2D"]
+[node name="plant2gun" type="Node2D"]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(86, 0)

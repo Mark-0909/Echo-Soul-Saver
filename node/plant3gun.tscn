@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvbw63rhyd4dx"]
+
+[ext_resource type="Script" path="res://script/plant_3_gun.gd" id="1_o32b6"]
+
+[node name="plant3gun" type="Node2D"]
+script = ExtResource("1_o32b6")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(86, 0)
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0

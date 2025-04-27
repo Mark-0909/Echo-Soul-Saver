@@ -210,7 +210,7 @@ animations = [{
 radius = 31.0295
 height = 62.0591
 
-[node name="Plant1" type="CharacterBody2D" groups=["Enemy", "Physical"]]
+[node name="Plant2" type="CharacterBody2D" groups=["Enemy", "Physical"]]
 scale = Vector2(0.362763, 0.304307)
 script = ExtResource("1_4vnpw")
 
@@ -222,7 +222,6 @@ autoplay = "default"
 frame_progress = 0.638829
 flip_h = true
 flip_v = true
-script = ExtResource("6_x6pqk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.820563, 1.16018)

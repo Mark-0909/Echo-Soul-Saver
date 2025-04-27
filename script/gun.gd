@@ -25,12 +25,10 @@ func _process(delta: float) -> void:
 		animated_sprite.flip_h = true  # Flip horizontally for left side
 		animated_sprite.flip_v = true
 		animated_sprite.position.x = -initial_position  
-		print(1)
 	else:
 		animated_sprite.flip_h = true
 		animated_sprite.flip_v = false
 		animated_sprite.position.x = initial_position  # Reset position
-		print(2)
 	
 	if Input.is_action_just_pressed("attack"):
 		animated_sprite.play("fire")

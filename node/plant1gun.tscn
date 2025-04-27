@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://gf38cr2vg80a"]
-
-[ext_resource type="Script" path="res://script/plant_1_gun.gd" id="1_ymrnx"]
+[gd_scene format=3 uid="uid://gf38cr2vg80a"]
 
 [node name="EnemyGun" type="Node2D"]
-script = ExtResource("1_ymrnx")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(86, 0)

@@ -4,7 +4,6 @@ var initial_position: float
 const BULLET = preload("res://node/bullet.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
-
 @export var is_player_gun: bool = false  
 @onready var enemysprite: AnimatedSprite2D = $"../Sprite2D"
 @export var detection_radius: float = 300.0
@@ -70,9 +69,9 @@ func shoot_enemy_gun() -> void:
 	await get_tree().create_timer(0.3).timeout 
 	shoot_bullet()
 	await get_tree().create_timer(0.3).timeout 
-	#shoot_bullet()
+	shoot_bullet()
 
-	#await get_tree().create_timer(0.5).timeout  
+	await get_tree().create_timer(0.5).timeout  
 
 
 func shoot_bullet() -> void:
