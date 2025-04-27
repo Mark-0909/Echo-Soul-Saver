@@ -129,7 +129,7 @@ script = ExtResource("1_k0vyt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
-animation = &"idle"
+animation = &"ghostidle"
 flip_h = true
 
 [node name="Gun" parent="." instance=ExtResource("15_e43bu")]

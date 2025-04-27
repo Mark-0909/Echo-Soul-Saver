@@ -20,3 +20,5 @@ func LoseLife() -> void:
 		queue_free()
 		get_tree().root.add_child(heart)
 		heart.global_position = soul_location.global_position
+
+	
