@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("ghostidle" if is_ghost else "idle")
 	else:
 		if is_ghost:
-			$AnimatedSprite2D.play("ghostwalk")  # <- I assume you want ghost **walking** animation, not idle
+			$AnimatedSprite2D.play("ghostidle")  # <- I assume you want ghost **walking** animation, not idle
 		elif is_on_floor():
 			$AnimatedSprite2D.play("walk")
 		else:
