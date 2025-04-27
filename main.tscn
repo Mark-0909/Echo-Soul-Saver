@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=26 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dlmuympuxml47" path="res://node/plus_life.tscn" id="13_n5wuo"]
 [ext_resource type="PackedScene" uid="uid://t82kjk8h0m72" path="res://node/finale.tscn" id="15_4w0n4"]
 [ext_resource type="PackedScene" uid="uid://b4q3iw1aqb3xx" path="res://node/slime1.tscn" id="16_723np"]
+[ext_resource type="PackedScene" uid="uid://d0buafv81q2tw" path="res://node/slime2.tscn" id="17_vj2xh"]
+[ext_resource type="PackedScene" uid="uid://cjdoro6lfi0tv" path="res://node/slime3.tscn" id="18_x8eri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -353,7 +355,7 @@ tile_map_data = PackedByteArray("AADg//f/AAAJAAAAAADg//j/AAAJAAAAAADg//n/AAAJAAA
 tile_set = SubResource("TileSet_2d1in")
 
 [node name="Player" parent="." instance=ExtResource("1_4p7vb")]
-position = Vector2(-395, -53)
+position = Vector2(-279, -99)
 scale = Vector2(0.7, 0.7)
 
 [node name="PlayerLife" parent="Player" instance=ExtResource("5_aoxt2")]
@@ -650,6 +652,12 @@ position = Vector2(2548, 65)
 [node name="slimes" type="Node" parent="."]
 
 [node name="Slime1" parent="." instance=ExtResource("16_723np")]
-position = Vector2(-241, -25)
+position = Vector2(-446, 39)
+
+[node name="Slime2" parent="." instance=ExtResource("17_vj2xh")]
+position = Vector2(-244, -25)
+
+[node name="Slime3" parent="." instance=ExtResource("18_x8eri")]
+position = Vector2(-105, 8)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

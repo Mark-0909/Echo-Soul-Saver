@@ -150,5 +150,15 @@ func _on_timer_timeout() -> void:
 
 # --- New knockback function here ---
 func apply_knockback(source_position: Vector2) -> void:
+	# Calculate direction from the source position to the player's position
 	var knockback_direction = (global_position - source_position).normalized()
-	velocity += knockback_direction * 500
+	
+	# Apply knockback force: Increase the magnitude for stronger knockback
+	velocity += knockback_direction * 500  # Increase the multiplier for stronger knockback
+
+	# Prevent downward velocity (keep player from being pushed down after knockback)
+	if not is_ghost:
+		velocity.y = max(velocity.y, 0)  # Ensure no downward movement after knockback
+
+	# Call move_and_slide to process the new velocity
+	move_and_slide()  # Apply the velocity to the movement system
