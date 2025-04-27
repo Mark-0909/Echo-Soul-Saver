@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var life: int = 3
 @onready var soul_location: Marker2D = $Marker2D
-const SOUL = preload("res://node/soul.tscn")
+const PLUS_LIFE = preload("res://node/plus_life.tscn")
 func _ready() -> void:
 	$Sprite2D.flip_h = false
 	$Sprite2D.flip_v = false
@@ -12,9 +12,9 @@ func LoseLife() -> void:
 	print("Enemy hit! Remaining life:", life)
 
 	if life <= 0:
-		var soul = SOUL.instantiate()
+		var heart = PLUS_LIFE.instantiate()
 		$Sprite2D.play("dead")
 		await get_tree().create_timer(0.5).timeout  
 		queue_free()
-		get_tree().root.add_child(soul)
-		soul.global_position = soul_location.global_position
+		get_tree().root.add_child(heart)
+		heart.global_position = soul_location.global_position

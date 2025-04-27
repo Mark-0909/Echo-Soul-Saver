@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://script/game_manager.gd" id="6_0hxsx"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://bsbve1omngsfu" path="res://node/shrine.tscn" id="10_qu2g0"]
-[ext_resource type="PackedScene" uid="uid://ba8wkolug37rk" path="res://node/forestspirit.tscn" id="11_xqyrl"]
+[ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="12_x6brw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -283,7 +283,7 @@ tile_set = SubResource("TileSet_jjl7t")
 [node name="Shrine" parent="." instance=ExtResource("10_qu2g0")]
 position = Vector2(1870, -323)
 
-[node name="Enemy" parent="." instance=ExtResource("11_xqyrl")]
-position = Vector2(1415, -365)
+[node name="Plant1" parent="." instance=ExtResource("12_x6brw")]
+position = Vector2(1502, -313)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]

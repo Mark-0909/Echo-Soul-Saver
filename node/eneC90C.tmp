@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bytl78fqyhgqo"]
+[gd_scene load_steps=18 format=3 uid="uid://bytl78fqyhgqo"]
 
+[ext_resource type="Script" path="res://script/enemy.gd" id="1_gjuft"]
 [ext_resource type="PackedScene" uid="uid://cpfxig37ynkv" path="res://node/gunenemy.tscn" id="2_ttnjd"]
 [ext_resource type="Texture2D" uid="uid://cp0qo2yad2jo8" path="res://assets/soul/soulcreate1.png" id="3_056nc"]
 [ext_resource type="Texture2D" uid="uid://bv2ulckoh5kel" path="res://assets/soul/soulcreate2.png" id="4_sybsy"]
@@ -91,7 +92,7 @@ height = 62.0591
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy", "Physical"]]
 scale = Vector2(0.362763, 0.304307)
-script = ExtResource("7_uwmkc")
+script = ExtResource("1_gjuft")
 
 [node name="EnemyGun" parent="." instance=ExtResource("2_ttnjd")]
 
@@ -107,5 +108,6 @@ flip_v = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.820563, 1.16018)
 shape = SubResource("CapsuleShape2D_2iijb")
+script = ExtResource("7_uwmkc")
 
 [node name="Marker2D" type="Marker2D" parent="."]

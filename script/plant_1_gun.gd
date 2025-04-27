@@ -1,7 +1,8 @@
 extends Node2D
 
 var initial_position: float  
-const GHOSTBULLET = preload("res://node/ghostbulletenemy.tscn")
+const BULLET = preload("res://node/bullet.tscn")
+
 @onready var muzzle: Marker2D = $Marker2D
 @export var is_player_gun: bool = false  
 @onready var enemysprite: AnimatedSprite2D = $"../Sprite2D"
@@ -66,17 +67,20 @@ func shoot_enemy_gun() -> void:
 
 	shoot_bullet()
 	await get_tree().create_timer(0.3).timeout 
-	shoot_bullet()
-	await get_tree().create_timer(0.3).timeout 
-	shoot_bullet()
+	#shoot_bullet()
+	#await get_tree().create_timer(0.3).timeout 
+	#shoot_bullet()
 
-	await get_tree().create_timer(0.5).timeout  
+	#await get_tree().create_timer(0.5).timeout  
 
 
 func shoot_bullet() -> void:
-	var bullet_instance = GHOSTBULLET.instantiate()
+	enemysprite.play("attack")
+	await get_tree().create_timer(.3).timeout
+	var bullet_instance = BULLET.instantiate()
 	bullet_instance.is_player_bullet = false
 	get_tree().root.add_child(bullet_instance)
 	bullet_instance.global_position = muzzle.global_position
 	bullet_instance.rotation = rotation
 	print("Bullet fired!")  
+	enemysprite.play("default")

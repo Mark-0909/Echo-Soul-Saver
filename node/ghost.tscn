@@ -1,0 +1,194 @@
+[gd_scene load_steps=16 format=3 uid="uid://d0no164s112rd"]
+
+[ext_resource type="PackedScene" uid="uid://bnnw53trx53oy" path="res://node/ghostgun.tscn" id="2_fdb0p"]
+[ext_resource type="Texture2D" uid="uid://bv2ulckoh5kel" path="res://assets/soul/soulcreate2.png" id="3_wfh1r"]
+[ext_resource type="Texture2D" uid="uid://cp0qo2yad2jo8" path="res://assets/soul/soulcreate1.png" id="4_oolx3"]
+[ext_resource type="Texture2D" uid="uid://brmwkm5idatjv" path="res://assets/forestspirt/ghost-move.png" id="5_wpomt"]
+
+[sub_resource type="GDScript" id="GDScript_uko1d"]
+script/source = "extends Node2D
+
+var initial_position: float  
+const BULLET = preload(\"res://node/bullet.tscn\")
+
+@onready var muzzle: Marker2D = $Marker2D
+@export var is_player_gun: bool = false  
+@onready var enemysprite: AnimatedSprite2D = $\"../Sprite2D\"
+@export var detection_radius: float = 300.0
+
+var player_in_range: bool = false  
+var is_shooting: bool = false  
+
+func _ready() -> void:
+	initial_position = position.x
+
+	
+	await get_tree().process_frame  
+
+	if not is_player_gun:
+		check_player_distance()  
+
+func _process(delta: float) -> void:
+	if not is_player_gun:
+		check_player_distance()
+
+func check_player_distance() -> void:
+	var player = get_tree().get_first_node_in_group(\"Player\")  
+	if player:
+		var distance_to_player = global_position.distance_to(player.global_position)
+		
+		if distance_to_player <= detection_radius:
+			if not player_in_range:  
+				player_in_range = true  
+				if not is_shooting:
+					start_shooting_cycle()  
+			
+			look_at(player.global_position)  
+			update_gun_orientation()
+		else:
+			player_in_range = false  
+			is_shooting = false  
+
+func update_gun_orientation() -> void:
+	rotation_degrees = wrapf(rotation_degrees, 0, 360)  
+
+	if rotation_degrees > 90 and rotation_degrees < 270:
+		scale.y = -1  
+		
+		enemysprite.flip_h = false
+	else:
+		scale.y = 1  
+
+		enemysprite.flip_h = true
+
+func start_shooting_cycle() -> void:
+	is_shooting = true  
+	while player_in_range:  
+		await shoot_enemy_gun()
+		await get_tree().create_timer(2.0).timeout  
+
+	is_shooting = false  
+
+func shoot_enemy_gun() -> void:
+	print(\"Enemy fires!\") 
+	
+
+	shoot_bullet()
+	await get_tree().create_timer(0.3).timeout 
+	#shoot_bullet()
+	#await get_tree().create_timer(0.3).timeout 
+	#shoot_bullet()
+
+	#await get_tree().create_timer(0.5).timeout  
+
+
+func shoot_bullet() -> void:
+	enemysprite.play(\"attack\")
+	await get_tree().create_timer(.3).timeout
+	var bullet_instance = BULLET.instantiate()
+	bullet_instance.is_player_bullet = false
+	get_tree().root.add_child(bullet_instance)
+	bullet_instance.global_position = muzzle.global_position
+	bullet_instance.rotation = rotation
+	print(\"Bullet fired!\")  
+	enemysprite.play(\"default\")
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kptai"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blerf"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62liy"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88wkd"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsyil"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tytg7"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13cgl"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpxpt"]
+atlas = ExtResource("5_wpomt")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ss3ro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_wfh1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oolx3")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kptai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blerf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62liy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88wkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsyil")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tytg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13cgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpxpt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2iijb"]
+radius = 31.0295
+height = 62.0591
+
+[node name="Ghost" type="CharacterBody2D" groups=["Enemy", "Physical"]]
+scale = Vector2(0.362763, 0.304307)
+script = SubResource("GDScript_uko1d")
+
+[node name="EnemyGun" parent="." instance=ExtResource("2_fdb0p")]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(-1.64419, 2.14788)
+sprite_frames = SubResource("SpriteFrames_ss3ro")
+animation = &"death"
+autoplay = "default"
+flip_h = true
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.820563, 1.16018)
+shape = SubResource("CapsuleShape2D_2iijb")
+
+[node name="Marker2D" type="Marker2D" parent="."]

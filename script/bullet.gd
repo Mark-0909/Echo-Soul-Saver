@@ -6,7 +6,6 @@ const SPEED: int = 300
 var moving: bool = true  
 
 @export var is_player_bullet: bool = true
-
 @export var is_ghost_bullet: bool = false
 
 func _ready() -> void:
@@ -25,25 +24,32 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	print("Bullet hit:", body.name)
 
-	# Player bullets should damage enemies
 	if is_player_bullet:
+		# Player bullet behavior
 		if body.is_in_group("Player"):
 			return  # Ignore hitting self
+		
 		if body.is_in_group("Enemy"):
+			if body.is_in_group("Ghost"):
+				print("Enemy is a ghost — bullet passed through")
+				return  # Ignore hitting ghost enemies
+			
 			if body.has_method("LoseLife"):
 				body.LoseLife()
-	elif not is_player_bullet:
-		# Enemy bullets should damage players
+	else:
+		# Enemy bullet behavior
 		if body.is_in_group("Enemy"):
-			return  # Ignore hitting self
+			return  # Enemy bullets ignore other enemies
+
 		if body.is_in_group("Player"):
 			if "is_ghost" in body and body.is_ghost:
-				print("Ghost mode active — bullet passed through")
-				return
+				print("Player in ghost mode — bullet passed through")
+				return  # Ignore player ghosts
+
 			if body.has_method("MinusHealth"):
 				body.MinusHealth()
 
-	# Handle bullet impact visuals (common for any hit)
+	# Common impact logic (bullet disappears)
 	moving = false
 	set_process(false)
 	animated_sprite_2d.play("splash")

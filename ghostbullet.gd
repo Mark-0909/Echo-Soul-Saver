@@ -19,7 +19,15 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if body.is_in_group("Player") and is_player_bullet and is_ghost_bullet:
 		return
-	
+		
+	if body.is_in_group("Ghost") and body.is_in_group("Enemy") and is_ghost_bullet and is_player_bullet:
+		if body.is_in_group("Enemy"):
+			if body.is_in_group("Ghost"):
+				print("Enemy is a ghost — bullet passed through")
+				return  # Ignore hitting ghost enemies
+			
+			if body.has_method("LoseLife"):
+				body.LoseLife()
 	# Handle bullet impact visuals
 	moving = false 
 	set_process(false)  

@@ -6,8 +6,7 @@ const SOUL = preload("res://node/soul.tscn")
 
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 
-var player: Node2D = null  # Will find a node in group "Player"
-var adjusted: bool = false  # New global variable to check if we already adjusted position
+var player: Node2D = null  # We will find any node in group "Player"
 
 func _ready() -> void:
 	sprite.flip_h = false
@@ -15,7 +14,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if player == null:
-		# Find player only once
+		# Find any node that is in group "Player"
 		for node in get_tree().get_current_scene().get_children():
 			if node.is_in_group("Player"):
 				player = node
@@ -25,19 +24,9 @@ func _physics_process(delta: float) -> void:
 		var distance = global_position.distance_to(player.global_position)
 		if distance <= 200:
 			if player.global_position.x > global_position.x:
-				if sprite.flip_h:  # Was flipped, now unflip
-					sprite.flip_h = false
-					if not adjusted:
-						global_position.x += 5  # adjust a bit to the right
-						adjusted = true
+				sprite.flip_h = false  # Player is on right
 			else:
-				if not sprite.flip_h:  # Was normal, now flip
-					sprite.flip_h = true
-					if not adjusted:
-						global_position.x -= 5  # adjust a bit to the left
-						adjusted = true
-		else:
-			adjusted = false  # Reset adjustment when player is far
+				sprite.flip_h = true   # Player is on left
 
 func LoseLife() -> void:
 	life -= 1
