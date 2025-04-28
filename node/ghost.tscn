@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/ghost.gd" id="1_laq06"]
 [ext_resource type="Texture2D" uid="uid://cp0qo2yad2jo8" path="res://assets/soul/soulcreate1.png" id="3_iws7h"]
 [ext_resource type="Texture2D" uid="uid://brmwkm5idatjv" path="res://assets/forestspirt/ghost-move.png" id="4_bilhl"]
-[ext_resource type="PackedScene" uid="uid://gf38cr2vg80a" path="res://node/plant1gun.tscn" id="6_6optf"]
+[ext_resource type="PackedScene" uid="uid://iqlad1ouw84i" path="res://node/ghostgun.tscn" id="4_nag12"]
 [ext_resource type="Script" path="res://script/ghost_gun.gd" id="7_hfyu6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0qd3n"]
@@ -127,5 +127,5 @@ shape = SubResource("CapsuleShape2D_2iijb")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
-[node name="EnemyGun2" parent="." instance=ExtResource("6_6optf")]
+[node name="ghostGun" parent="." instance=ExtResource("4_nag12")]
 script = ExtResource("7_hfyu6")

@@ -113,10 +113,7 @@ func PlayerState() -> void:
 			2: $PlayerLife/AnimatedSprite2D.play("2life")
 			1: $PlayerLife/AnimatedSprite2D.play("1life")
 	else:
-		timer.wait_time = 0.01
-		timer.start()
-		if game_manager.has_method("on_player_death"):
-			game_manager.on_player_death()
+		get_tree().reload_current_scene()
 
 func start_transform() -> void:
 	is_transforming = true

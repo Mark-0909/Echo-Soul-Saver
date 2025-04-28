@@ -78,7 +78,8 @@ func shoot_enemy_gun() -> void:
 	await get_tree().create_timer(0.3).timeout
 	shoot_bullet()
 	await get_tree().create_timer(0.3).timeout
-	#shoot_bullet()
+	shoot_bullet()
+	await get_tree().create_timer(0.3).timeout
 
 func shoot_bullet() -> void:
 	enemysprite.play("attack")

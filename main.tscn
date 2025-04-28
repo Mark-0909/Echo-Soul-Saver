@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=23 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
-[ext_resource type="Script" path="res://script/plant_3_gun.gd" id="1_646ge"]
 [ext_resource type="Texture2D" uid="uid://cyopohrx1pbcb" path="res://assets/tilemap-backgrounds_packed.png" id="1_kllqw"]
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://node/killzone.tscn" id="3_eagbo"]
 [ext_resource type="Shader" path="res://shader/terrain.gdshader" id="3_frtqv"]
@@ -10,9 +9,13 @@
 [ext_resource type="Script" path="res://script/game_manager.gd" id="6_0hxsx"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://bsbve1omngsfu" path="res://node/shrine.tscn" id="10_qu2g0"]
-[ext_resource type="PackedScene" uid="uid://l26ojmvqlmrv" path="res://node/plant3.tscn" id="13_4nawj"]
+[ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="12_ragq7"]
+[ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="13_2ec72"]
 [ext_resource type="PackedScene" uid="uid://bhyvt5rul03d7" path="res://node/wood1.tscn" id="13_vytae"]
+[ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="14_l0x8m"]
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://node/wreckingball.tscn" id="14_voy0a"]
+
+[sub_resource type="GDScript" id="GDScript_q185f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
 texture = ExtResource("1_kllqw")
@@ -220,7 +223,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_t1107")
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_646ge")
+script = SubResource("GDScript_q185f")
 metadata/_edit_vertical_guides_ = [-710.0]
 
 [node name="background" type="TileMapLayer" parent="." groups=["Background"]]
@@ -295,8 +298,14 @@ scale = Vector2(2.53457, 1.68702)
 [node name="wreckingball" parent="." instance=ExtResource("14_voy0a")]
 position = Vector2(-34, 63)
 
-[node name="Plant3" parent="." instance=ExtResource("13_4nawj")]
-position = Vector2(375, -94)
+[node name="Plant1" parent="." instance=ExtResource("12_ragq7")]
+position = Vector2(251, 38)
+
+[node name="Plant2" parent="." instance=ExtResource("13_2ec72")]
+position = Vector2(174, 86)
+
+[node name="Plant3" parent="." instance=ExtResource("14_l0x8m")]
+position = Vector2(-32, 112)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Shrine" to="." method="_on_shrine_body_entered"]

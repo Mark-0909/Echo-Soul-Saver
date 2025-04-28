@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://quf8pdbp4pfw"]
+[gd_scene load_steps=34 format=3 uid="uid://quf8pdbp4pfw"]
 
 [ext_resource type="Script" path="res://script/plant_1.gd" id="1_8mnre"]
 [ext_resource type="Texture2D" uid="uid://7so3owjkny2h" path="res://assets/enemies/plant1/Plant1_Death_full.png" id="3_6wwdk"]
 [ext_resource type="Texture2D" uid="uid://c34xtykqinamy" path="res://assets/enemies/plant1/Plant1_Idle_full.png" id="4_i053e"]
 [ext_resource type="Texture2D" uid="uid://clne3wm712g51" path="res://assets/enemies/plant1/Plant1_Hurt_full.png" id="5_6rew4"]
-[ext_resource type="PackedScene" uid="uid://gf38cr2vg80a" path="res://node/plant1gun.tscn" id="6_00wyg"]
 [ext_resource type="Texture2D" uid="uid://ljh6dvo3gys0" path="res://assets/enemies/plant1/Plant1_Attack_full.png" id="6_iv341"]
-[ext_resource type="Script" path="res://script/plant_1_gun.gd" id="7_lxb10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_du8hf"]
 atlas = ExtResource("6_iv341")
@@ -232,13 +230,11 @@ sprite_frames = SubResource("SpriteFrames_ss3ro")
 animation = &"dead"
 autoplay = "default"
 flip_h = true
-flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.820563, 1.16018)
 shape = SubResource("CapsuleShape2D_2iijb")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="PlusHeartLocation" type="Marker2D" parent="."]
 
-[node name="EnemyGun2" parent="." instance=ExtResource("6_00wyg")]
-script = ExtResource("7_lxb10")
+[node name="Bulletlocation" type="Marker2D" parent="."]
