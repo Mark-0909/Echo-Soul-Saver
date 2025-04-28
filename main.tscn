@@ -297,3 +297,4 @@ position = Vector2(1811, -487)
 scale = Vector2(2.53457, 1.68702)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Shrine" to="." method="_on_shrine_body_entered"]

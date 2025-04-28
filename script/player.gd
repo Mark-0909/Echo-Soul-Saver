@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -300.0
 var player_life: int = 6
 @export var is_ghost: bool = false
 var is_transforming: bool = false
+@export var souls: int = 0
 
 @onready var player_health: Node2D = $PlayerLife
 @onready var game_manager: Node = %gameManager
@@ -98,6 +99,9 @@ func PlusHealth() -> void:
 func MinusHealth() -> void:
 	player_life -= 1
 	PlayerState()
+	
+func AddSoul() -> void:
+	souls += 1
 
 func PlayerState() -> void:
 	print(player_life)

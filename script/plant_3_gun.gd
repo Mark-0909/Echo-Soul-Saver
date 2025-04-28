@@ -84,3 +84,7 @@ func shoot_bullet() -> void:
 	bullet_instance.rotation = rotation
 	print("Bullet fired!")  
 	enemysprite.play("default")
+
+
+func _on_shrine_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

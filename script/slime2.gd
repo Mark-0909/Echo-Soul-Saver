@@ -88,6 +88,7 @@ func LoseLife() -> void:
 	await get_tree().create_timer(.3).timeout
 	sprite.play("walk")
 
+
 # Triggered when an object enters the Area2D's collision shape
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and not is_attacking:

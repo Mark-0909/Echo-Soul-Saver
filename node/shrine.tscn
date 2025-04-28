@@ -1,5 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://bsbve1omngsfu"]
+[gd_scene load_steps=17 format=3 uid="uid://bsbve1omngsfu"]
 
+[ext_resource type="Script" path="res://script/shrine.gd" id="1_7gns0"]
 [ext_resource type="Texture2D" uid="uid://jvf2mri5ljvh" path="res://assets/shrine/stand.png" id="1_vwih6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qd7n"]
@@ -104,6 +105,7 @@ size = Vector2(51, 85)
 
 [node name="Shrine" type="Area2D"]
 scale = Vector2(0.499675, 0.455915)
+script = ExtResource("1_7gns0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.412513, 0.391157)
@@ -113,3 +115,5 @@ animation = &"stand"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_feg2t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
