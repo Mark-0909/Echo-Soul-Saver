@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=21 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Script" path="res://script/plant_3_gun.gd" id="1_646ge"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://bsbve1omngsfu" path="res://node/shrine.tscn" id="10_qu2g0"]
 [ext_resource type="PackedScene" uid="uid://xhi861s4obd6" path="res://node/plant2.tscn" id="12_shb4y"]
+[ext_resource type="PackedScene" uid="uid://bhyvt5rul03d7" path="res://node/wood1.tscn" id="13_vytae"]
 [ext_resource type="PackedScene" uid="uid://cw8m0vhwjsiy8" path="res://node/ghost.tscn" id="14_toc53"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lb0c0"]
@@ -283,12 +284,16 @@ tile_map_data = PackedByteArray("AADc//z/AAAAAAEAAADc//3/AAAAAAIAAADc//7/AAAAAAI
 tile_set = SubResource("TileSet_jjl7t")
 
 [node name="Shrine" parent="." instance=ExtResource("10_qu2g0")]
-position = Vector2(1870, -323)
+position = Vector2(1869, -338)
 
 [node name="Ghost" parent="." instance=ExtResource("14_toc53")]
 position = Vector2(1577, -327)
 
 [node name="Plant2" parent="." instance=ExtResource("12_shb4y")]
 position = Vector2(1358, -371)
+
+[node name="wood" parent="." instance=ExtResource("13_vytae")]
+position = Vector2(1811, -487)
+scale = Vector2(2.53457, 1.68702)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
