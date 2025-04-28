@@ -7,7 +7,6 @@ var player_life: int = 6
 @export var is_ghost: bool = false
 var is_transforming: bool = false
 @export var souls: int = 0
-
 @onready var player_health: Node2D = $PlayerLife
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
@@ -141,6 +140,10 @@ func start_transform() -> void:
 		is_ghost = false
 		Health_drain.stop()
 		$Gun.is_ghost_bullet = false
+		if $Gun.has_node("AnimatedSprite2D"):
+				$Gun.get_node("AnimatedSprite2D").play("steady")
+				await get_tree().create_timer(0.7).timeout
+				$Gun.get_node("AnimatedSprite2D").play("steady")
 
 	# Update shader parameters
 	terrain.material.set_shader_parameter("is_ghost", is_ghost)

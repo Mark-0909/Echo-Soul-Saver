@@ -94,7 +94,7 @@ script = ExtResource("1_80sby")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.826611, 0.858682)
 sprite_frames = SubResource("SpriteFrames_c6qbe")
-animation = &"fire"
+animation = &"steady"
 autoplay = "fire"
 offset = Vector2(43, 6.09)
 flip_h = true
