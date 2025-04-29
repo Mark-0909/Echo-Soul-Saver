@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=39 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Shader" path="res://background.gdshader" id="1_4ugga"]
@@ -22,10 +22,11 @@
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="9_vlmmr"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://cpmwvroetgqc4" path="res://node/slime1.tscn" id="10_k2up2"]
-[ext_resource type="PackedScene" uid="uid://cbrnprd7ajv2e" path="res://node/soul.tscn" id="13_ri4au"]
 [ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="16_b8dq0"]
 [ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="17_wpa1r"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="21_kli5n"]
+[ext_resource type="Texture2D" uid="uid://cdbjmhpu0b64w" path="res://assets/instruction/KeySample.png" id="27_73lce"]
+[ext_resource type="Texture2D" uid="uid://cideo0yt0we20" path="res://assets/instruction/Game Buttons Instructions.png" id="28_mlynv"]
 
 [sub_resource type="GDScript" id="GDScript_q185f"]
 
@@ -256,9 +257,25 @@ shader_parameter/spread_radius = 200.0
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x4on0"]
 distance = -234.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_kkbn2"]
-font_size = 12
-font_color = Color(6.31716e-08, 0.0777424, 0.0608874, 1)
+[sub_resource type="AtlasTexture" id="AtlasTexture_80xar"]
+atlas = ExtResource("27_73lce")
+region = Rect2(162.42, 36.375, 27.445, 25.025)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmh2r"]
+atlas = ExtResource("28_mlynv")
+region = Rect2(0, 54.18, 60.36, 91.34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jgp7"]
+atlas = ExtResource("27_73lce")
+region = Rect2(193.3, 33.07, 31.215, 31.575)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8trw"]
+atlas = ExtResource("27_73lce")
+region = Rect2(94.94, 129.56, 34.475, 32.08)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxvww"]
+atlas = ExtResource("27_73lce")
+region = Rect2(63.3, 33, 32.31, 31.44)
 
 [node name="main" type="Node2D"]
 script = SubResource("GDScript_q185f")
@@ -445,18 +462,6 @@ script = ExtResource("9_fncjx")
 [node name="Shrine" parent="Shrine" instance=ExtResource("4_oxol4")]
 position = Vector2(-407, -4036)
 
-[node name="Soul" parent="Shrine" instance=ExtResource("13_ri4au")]
-position = Vector2(1536, -327)
-
-[node name="Soul2" parent="Shrine" instance=ExtResource("13_ri4au")]
-position = Vector2(1611, -342)
-
-[node name="Soul3" parent="Shrine" instance=ExtResource("13_ri4au")]
-position = Vector2(1654, -333)
-
-[node name="Soul4" parent="Shrine" instance=ExtResource("13_ri4au")]
-position = Vector2(1569, -359)
-
 [node name="ghost" type="Node" parent="."]
 
 [node name="Ghost2" parent="ghost" instance=ExtResource("4_pvg6b")]
@@ -637,6 +642,39 @@ position = Vector2(-31, -2397)
 
 [node name="PlusLife29" parent="hearts" instance=ExtResource("3_m6x6c")]
 position = Vector2(-273, -2813)
+
+[node name="PlusLife30" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(-240, -3306)
+
+[node name="PlusLife31" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(145, -3436)
+
+[node name="PlusLife32" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(449, -3116)
+
+[node name="PlusLife33" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(1181, -3436)
+
+[node name="PlusLife34" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(1410, -3132)
+
+[node name="PlusLife35" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(1639, -3306)
+
+[node name="PlusLife36" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(1508, -4090)
+
+[node name="PlusLife37" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(962, -4091)
+
+[node name="PlusLife38" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(770, -4191)
+
+[node name="PlusLife39" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(368, -4137)
+
+[node name="PlusLife40" parent="hearts" instance=ExtResource("3_m6x6c")]
+position = Vector2(131, -4102)
 
 [node name="plants" type="Node" parent="."]
 
@@ -1059,7 +1097,7 @@ volume_db = -5.255
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_4p7vb")]
-position = Vector2(1727, -350)
+position = Vector2(-368, 12)
 scale = Vector2(0.7, 0.7)
 
 [node name="PlayerLife" parent="Player" instance=ExtResource("5_aoxt2")]
@@ -1072,13 +1110,60 @@ limit_bottom = 255
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="Counter" type="Label" parent="Player"]
-offset_left = -24.2857
-offset_top = -31.4286
-offset_right = 36.7143
-offset_bottom = -8.42858
-text = "Coins: 0"
-label_settings = SubResource("LabelSettings_kkbn2")
-metadata/_edit_use_anchors_ = true
+[node name="Instruction" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Instruction"]
+position = Vector2(-339, -159)
+scale = Vector2(0.888393, 1)
+texture = SubResource("AtlasTexture_80xar")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Instruction"]
+position = Vector2(-118, -163)
+scale = Vector2(0.627037, 0.709291)
+texture = SubResource("AtlasTexture_wmh2r")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Instruction"]
+position = Vector2(-122, -251)
+scale = Vector2(0.888393, 1)
+texture = SubResource("AtlasTexture_8jgp7")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Instruction"]
+position = Vector2(-365, -188)
+scale = Vector2(0.888393, 1)
+texture = SubResource("AtlasTexture_w8trw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Instruction"]
+position = Vector2(-392, -159)
+scale = Vector2(0.888393, 1)
+texture = SubResource("AtlasTexture_xxvww")
+
+[node name="Label" type="Label" parent="Instruction"]
+offset_left = -102.0
+offset_top = -258.0
+offset_right = 138.0
+offset_bottom = -235.0
+scale = Vector2(0.621099, 0.645451)
+theme_override_colors/font_color = Color(0.35, 0.35, 0.35, 1)
+text = "Press E to transfrom into ghost and fly
+"
+
+[node name="Label3" type="Label" parent="Instruction"]
+offset_left = -93.0
+offset_top = -174.0
+offset_right = 147.0
+offset_bottom = -151.0
+scale = Vector2(0.621099, 0.645451)
+theme_override_colors/font_color = Color(0.35, 0.35, 0.35, 1)
+text = "Right Click to aim and shoot
+"
+
+[node name="Label2" type="Label" parent="Instruction"]
+offset_left = -311.0
+offset_top = -180.0
+offset_right = -160.0
+offset_bottom = -157.0
+scale = Vector2(0.604675, 0.543796)
+theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
+text = "Press AWD to move"
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
