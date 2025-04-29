@@ -50,10 +50,12 @@ func _process(delta):
 		player = null
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and player == null:
+	if body.is_in_group("Player"):
 		player = body
 		if body.has_method("AddSoul"):
 			body.AddSoul()
+	else:
+		print("Player null")
 
 func _on_timer_timeout() -> void:
 	# New random orbit behavior

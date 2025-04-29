@@ -98,7 +98,6 @@ func PlusHealth() -> void:
 
 func MinusHealth() -> void:
 	player_life -= 1
-	apply_knockback(global_position)
 	PlayerState()
 	
 	

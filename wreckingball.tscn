@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ccybxu1vb5js"]
 
-[ext_resource type="Script" path="res://script/wreckingball.gd" id="1_qp56c"]
+[ext_resource type="Script" path="res://wreckingball.gd" id="1_qp56c"]
 [ext_resource type="Texture2D" uid="uid://c4uuvownvh8sv" path="res://assets/rope.png" id="1_v7ig0"]
 [ext_resource type="Texture2D" uid="uid://dyrr6lr7gbtwm" path="res://assets/player/wreckingball.png" id="2_010ae"]
 [ext_resource type="Texture2D" uid="uid://cxdelb3shwmot" path="res://assets/circler.png" id="3_rk4fm"]
@@ -119,7 +119,7 @@ _data = {
 }
 
 [node name="wreckingball" type="Area2D"]
-scale = Vector2(0.425776, 0.349613)
+scale = Vector2(0.538482, 0.56861)
 script = ExtResource("1_qp56c")
 
 [node name="rope" type="Sprite2D" parent="."]
