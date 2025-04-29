@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=26 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
 [ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b2xrvpn3e7llv" path="res://node/gun.tscn" id="15_e43bu"]
 [ext_resource type="Texture2D" uid="uid://lr8qvpjg7bkq" path="res://assets/player/run3.png" id="16_oukyn"]
 [ext_resource type="Texture2D" uid="uid://uxt480ntvpnl" path="res://assets/player/run5.png" id="17_or5pr"]
+[ext_resource type="AudioStream" uid="uid://rxir82q34wgv" path="res://assets/sfx/ritual.mp3" id="22_ttcss"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4a28"]
 animations = [{
@@ -175,5 +176,8 @@ gradient = SubResource("Gradient_cxaek")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
+
+[node name="ritualsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_ttcss")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

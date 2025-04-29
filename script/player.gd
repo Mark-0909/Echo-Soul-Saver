@@ -176,8 +176,10 @@ func OfferSouls(is_offering: bool) -> void:
 	
 	is_offering_souls = is_offering
 	if is_offering:
+		$ritualsfx.play()
 		$AnimatedSprite2D.play("offer")
 	else:
+		$ritualsfx.stop()
 		$AnimatedSprite2D.play("idle")
 
 func apply_knockback(source_position: Vector2) -> void:
