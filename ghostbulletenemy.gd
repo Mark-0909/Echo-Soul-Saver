@@ -21,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 		
 	moving = false
 	set_process(false)
+	$bullethitsfx.play()
 	animated_sprite_2d.play("splash")
 	await get_tree().create_timer(0.1).timeout
 	queue_free()

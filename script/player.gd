@@ -22,6 +22,8 @@ var deployed := false
 
 var is_dead := false
 
+var is_dying := false
+
 @export var detection_radius: float = 150.0
 
 const TERRAIN = preload("res://shader/terrain.gdshader")
@@ -43,11 +45,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	
 	if is_dead:
+		
 		if is_ghost:
 			await start_transform()
 		$AnimatedSprite2D.play("dead")
 		await get_tree().create_timer(0.7).timeout
-		get_tree().reload_current_scene()
 		return
 		
 		
@@ -157,6 +159,7 @@ func PlusHealth() -> void:
 	PlayerState()
 
 func MinusHealth() -> void:
+	$hurtsfx.play()
 	player_life -= 1
 	PlayerState()
 	await blink_damage()
@@ -174,8 +177,9 @@ func AddSoul() -> void:
 	souls += 1
 
 func PlayerState() -> void:
-	print(player_life)
-	if player_life > 0:
+	if is_dying:
+		return
+	if player_life > 0 and not is_dying:
 		match player_life:
 			6: $PlayerLife/AnimatedSprite2D.play("default")
 			5: $PlayerLife/AnimatedSprite2D.play("5life")
@@ -184,6 +188,8 @@ func PlayerState() -> void:
 			2: $PlayerLife/AnimatedSprite2D.play("2life")
 			1: $PlayerLife/AnimatedSprite2D.play("1life")
 	else:
+		$deadsfx.play()
+		is_dying = true
 		is_dead = true
 
 func start_transform() -> void:
@@ -199,7 +205,7 @@ func start_transform() -> void:
 		$Gun.is_ghost_bullet = true
 		if $Gun.has_node("AnimatedSprite2D"):
 				$Gun.get_node("AnimatedSprite2D").play("create_circle")
-				await get_tree().create_timer(0.7).timeout
+				await get_tree().create_timer(0.5).timeout
 				$Gun.get_node("AnimatedSprite2D").play("circle")
 	else:
 		$AnimatedSprite2D.play("untransform")
@@ -254,3 +260,7 @@ func apply_knockback(source_position: Vector2) -> void:
 
 	# Call move_and_slide to process the new velocity
 	move_and_slide()  # Apply the velocity to the movement system
+
+
+func _on_deadsfx_finished() -> void:
+	get_tree().reload_current_scene()

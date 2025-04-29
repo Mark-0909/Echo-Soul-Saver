@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca7cit1n6ywgy"]
+[gd_scene load_steps=7 format=3 uid="uid://ca7cit1n6ywgy"]
 
 [ext_resource type="Script" path="res://script/bulletplayer.gd" id="1_ah3e6"]
 [ext_resource type="Texture2D" uid="uid://ckwguxwiqpm8d" path="res://assets/bullet.png" id="2_d2h7t"]
 [ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="3_32v5o"]
+[ext_resource type="AudioStream" uid="uid://3h6korjdah18" path="res://assets/sfx/bullethit.mp3" id="4_7d0aw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
 animations = [{
@@ -42,5 +43,9 @@ shape = SubResource("CapsuleShape2D_rcedg")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.504
+
+[node name="bullethitsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7d0aw")
+volume_db = -11.316
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

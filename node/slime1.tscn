@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b4q3iw1aqb3xx"]
+[gd_scene load_steps=41 format=3 uid="uid://cpmwvroetgqc4"]
 
 [ext_resource type="Script" path="res://script/slime1.gd" id="1_1wdyy"]
 [ext_resource type="Texture2D" uid="uid://bnhiyg58r1mng" path="res://assets/enemies/slime1/Slime1_Attack_body.png" id="1_xpnnt"]
@@ -280,13 +280,13 @@ scale = Vector2(1.14189, 1.06012)
 shape = SubResource("CircleShape2D_3w2yh")
 
 [node name="WallRayCast" type="RayCast2D" parent="Area2D"]
-position = Vector2(-12, 7.45058e-09)
+position = Vector2(-9.76398, 7.58313e-10)
 rotation = 1.57669
 scale = Vector2(-0.997954, 0.111049)
 target_position = Vector2(-0.211893, 24.9991)
 
 [node name="WallRayCast2" type="RayCast2D" parent="Area2D"]
-position = Vector2(12.4269, -6.18928e-08)
+position = Vector2(8.87634, 1.02884e-08)
 rotation = 4.66273
 scale = Vector2(0.844635, 0.133838)
 target_position = Vector2(-0.211893, 24.9991)

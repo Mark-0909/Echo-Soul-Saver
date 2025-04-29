@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=40 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
 [ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
@@ -34,6 +34,8 @@
 [ext_resource type="AudioStream" uid="uid://rxir82q34wgv" path="res://assets/sfx/ritual.mp3" id="22_ttcss"]
 [ext_resource type="AudioStream" uid="uid://dhvrhtba41i0u" path="res://assets/sfx/enemynear.mp3" id="23_3fa4c"]
 [ext_resource type="AudioStream" uid="uid://d386y7o3xmkws" path="res://assets/sfx/bgmusic.mp3" id="24_guufd"]
+[ext_resource type="AudioStream" uid="uid://cagwdf7ewtutx" path="res://assets/sfx/dead.mp3" id="33_i4246"]
+[ext_resource type="AudioStream" uid="uid://bhkvcgamjserf" path="res://assets/sfx/hurt.mp3" id="34_xfrix"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4a28"]
 animations = [{
@@ -242,7 +244,7 @@ script = ExtResource("1_k0vyt")
 scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
 animation = &"dead"
-frame_progress = 0.35318
+frame_progress = 0.493815
 flip_h = true
 
 [node name="Gun" parent="." instance=ExtResource("15_e43bu")]
@@ -263,6 +265,12 @@ wait_time = 1.5
 [node name="ritualsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_ttcss")
 
+[node name="deadsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_i4246")
+
+[node name="hurtsfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_xfrix")
+
 [node name="enemynear" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_3fa4c")
 volume_db = -6.195
@@ -275,3 +283,4 @@ autoplay = true
 parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="deadsfx" to="." method="_on_deadsfx_finished"]
