@@ -33,5 +33,6 @@ func _on_body_entered(body: Node2D) -> void:
 				game_manager.set("checkpoint", 2)
 				
 				print("checkpoint: ", game_manager.get("checkpoint"))
+				$"../../CanvasLayer/floor".text = "FLOOR 3"
 		else:
 			print("Not enough souls:", body.get("souls"))

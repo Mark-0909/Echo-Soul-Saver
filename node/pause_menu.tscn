@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://px26joct1hh6"]
+
+[ext_resource type="Texture2D" uid="uid://c6mrrkxekgwog" path="res://assets/instruction/HUD Text Box.png" id="1_1hqoi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owk2v"]
+texture = ExtResource("1_1hqoi")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3yek"]
+bg_color = Color(0.1312, 0.275247, 0.41, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rnkm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er8m2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn4tv"]
+bg_color = Color(0.2145, 0.65, 0.5629, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwlaf"]
+bg_color = Color(0.129412, 0.27451, 0.411765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnm52"]
+bg_color = Color(0.0980392, 0.207843, 0.309804, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -72.0
+offset_right = -95.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.300697, 0.744607)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(14.1136, 5.35301)
+theme_override_styles/panel = SubResource("StyleBoxTexture_owk2v")
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 44.9562
+offset_top = 79.4413
+offset_right = 249.956
+offset_bottom = 155.441
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.35448, 0.736674)
+theme_override_styles/focus = SubResource("StyleBoxFlat_b3yek")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0rnkm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_er8m2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qn4tv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwlaf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
+text = "RESTART"
+
+[node name="Button2" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 44.9561
+offset_top = 19.0067
+offset_right = 249.956
+offset_bottom = 95.0067
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.35448, 0.736674)
+theme_override_styles/focus = SubResource("StyleBoxFlat_b3yek")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0rnkm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_er8m2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qn4tv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwlaf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
+text = "RESUME"
+
+[node name="Button3" type="Button" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 169.606
+offset_top = 143.7
+offset_right = 374.606
+offset_bottom = 219.7
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.11698, 0.542707)
+theme_override_styles/focus = SubResource("StyleBoxFlat_b3yek")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0rnkm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_er8m2")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qn4tv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xwlaf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
+text = "CLOSE"
