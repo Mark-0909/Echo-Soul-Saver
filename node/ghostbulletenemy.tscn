@@ -1,39 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://3xih86e1b6tg"]
+[gd_scene load_steps=6 format=3 uid="uid://3xih86e1b6tg"]
 
 [ext_resource type="Script" path="res://ghostbulletenemy.gd" id="1_aql6r"]
-[ext_resource type="Texture2D" uid="uid://kpltll0rdfcr" path="res://assets/soul/soul2.png" id="2_bwmnj"]
-[ext_resource type="Texture2D" uid="uid://bj77g4xach6d2" path="res://assets/soul/soul1.png" id="3_3e3hc"]
-[ext_resource type="Texture2D" uid="uid://cbfey5v7cwhe4" path="res://assets/soul/soul3.png" id="4_dd8h1"]
-[ext_resource type="Texture2D" uid="uid://b0qdebpx3ote" path="res://assets/soul/soulcreate5.png" id="5_srmlq"]
-[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="6_bumvq"]
+[ext_resource type="Texture2D" uid="uid://bprs6lgxt1q1a" path="res://assets/ghostbullet.png" id="2_2j6lr"]
+[ext_resource type="Texture2D" uid="uid://btpctqoo4k1o8" path="res://assets/ghostbulletsplash.png" id="3_v1tq2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_asai3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bwmnj")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_3e3hc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_dd8h1")
+"texture": ExtResource("2_2j6lr")
 }],
 "loop": true,
 "name": &"flying",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_srmlq")
-}],
-"loop": true,
-"name": &"ghostbullet",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 0.5,
-"texture": ExtResource("6_bumvq")
+"texture": ExtResource("3_v1tq2")
 }],
 "loop": true,
 "name": &"splash",
@@ -43,19 +26,21 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
 
 [node name="GhostBulletEnemy" type="Area2D" groups=["GhostBullet"]]
-scale = Vector2(0.397357, 0.488563)
+scale = Vector2(1.29811, 1.74482)
 script = ExtResource("1_aql6r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["GhostBullet"]]
 position = Vector2(32.7162, 6.14046)
 scale = Vector2(0.367254, 0.306049)
-sprite_frames = SubResource("SpriteFrames_2yvtb")
+sprite_frames = SubResource("SpriteFrames_asai3")
 animation = &"flying"
 autoplay = "flying"
 offset = Vector2(-91, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.77035, 0.573124)
 rotation = 1.56708
+scale = Vector2(0.253763, 0.398349)
 shape = SubResource("CapsuleShape2D_rcedg")
 
 [node name="Timer" type="Timer" parent="."]

@@ -1,39 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://18le0r0fpa3c"]
+[gd_scene load_steps=6 format=3 uid="uid://18le0r0fpa3c"]
 
 [ext_resource type="Script" path="res://ghostbullet.gd" id="1_75um6"]
-[ext_resource type="Texture2D" uid="uid://kpltll0rdfcr" path="res://assets/soul/soul2.png" id="2_3rkmo"]
-[ext_resource type="Texture2D" uid="uid://bj77g4xach6d2" path="res://assets/soul/soul1.png" id="3_cpqs0"]
-[ext_resource type="Texture2D" uid="uid://b0qdebpx3ote" path="res://assets/soul/soulcreate5.png" id="3_lngvl"]
-[ext_resource type="Texture2D" uid="uid://tc4hghaq8ay1" path="res://assets/bulletsplash.png" id="4_0wfyn"]
-[ext_resource type="Texture2D" uid="uid://cbfey5v7cwhe4" path="res://assets/soul/soul3.png" id="4_xd3xc"]
+[ext_resource type="Texture2D" uid="uid://bprs6lgxt1q1a" path="res://assets/ghostbullet.png" id="2_yxjvd"]
+[ext_resource type="Texture2D" uid="uid://btpctqoo4k1o8" path="res://assets/ghostbulletsplash.png" id="4_3smqp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2yvtb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3rkmo")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_cpqs0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_xd3xc")
+"texture": ExtResource("2_yxjvd")
 }],
 "loop": true,
 "name": &"flying",
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_lngvl")
-}],
-"loop": true,
-"name": &"ghostbullet",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 0.5,
-"texture": ExtResource("4_0wfyn")
+"texture": ExtResource("4_3smqp")
 }],
 "loop": true,
 "name": &"splash",
@@ -43,7 +26,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcedg"]
 
 [node name="GhostBullet" type="Area2D" groups=["GhostBullet"]]
-scale = Vector2(0.397357, 0.488563)
+scale = Vector2(1.22945, 1.35806)
 script = ExtResource("1_75um6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["GhostBullet"]]
@@ -55,7 +38,9 @@ autoplay = "flying"
 offset = Vector2(-91, -17)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.62675, 0)
 rotation = 1.56708
+scale = Vector2(0.324818, 0.534043)
 shape = SubResource("CapsuleShape2D_rcedg")
 
 [node name="Timer" type="Timer" parent="."]

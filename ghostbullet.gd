@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED: int = 300
+const SPEED: int = 100
 var moving: bool = true  
 
 @export var is_player_bullet: bool = true
