@@ -209,7 +209,7 @@ radius = 31.0295
 height = 62.0591
 
 [node name="Plant2" type="CharacterBody2D" groups=["Enemy", "Physical"]]
-scale = Vector2(0.362763, 0.304307)
+scale = Vector2(0.539, 0.427)
 script = ExtResource("1_hiqv4")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

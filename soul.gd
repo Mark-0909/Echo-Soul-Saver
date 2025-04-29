@@ -66,3 +66,10 @@ func _on_timer_timeout() -> void:
 
 	change_pattern_timer.wait_time = randf_range(2.0, 4.0)
 	change_pattern_timer.start()
+
+
+func Disperse() -> void:
+	await get_tree().create_timer(randi_range(1, 3)).timeout
+	$AnimatedSprite2D.play("disperse")
+	await get_tree().create_timer(0.5).timeout
+	queue_free()

@@ -69,15 +69,15 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ausk"]
 
-[node name="Soul" type="Area2D"]
+[node name="Soul" type="Area2D" groups=["Soul"]]
 scale = Vector2(0.136551, 0.130666)
 script = ExtResource("1_4ibc8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Soul"]]
 sprite_frames = SubResource("SpriteFrames_34hr0")
 animation = &"disperse"
 autoplay = "default"
-frame_progress = 0.361092
+frame_progress = 0.925651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2.6186, 2.36502)

@@ -1,14 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=25 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
 [ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
 [ext_resource type="Texture2D" uid="uid://coovne67lxa6y" path="res://assets/player/ghostidle2.png" id="3_ta57n"]
 [ext_resource type="Texture2D" uid="uid://b7jsxoe66mbyq" path="res://assets/player/ghostidle3.png" id="4_sc1en"]
+[ext_resource type="Texture2D" uid="uid://ciyely61gw1ag" path="res://assets/player/summon1.png" id="7_hl6df"]
 [ext_resource type="Texture2D" uid="uid://b8fid6ekemcmx" path="res://assets/player/transform1.png" id="7_wmr4m"]
 [ext_resource type="Texture2D" uid="uid://cro8nvetk0yra" path="res://assets/player/transform2.png" id="8_2ofyq"]
+[ext_resource type="Texture2D" uid="uid://6bw5hbcwemu4" path="res://assets/player/summon2.png" id="8_i6l77"]
 [ext_resource type="Texture2D" uid="uid://bwy2cbcbqkyv1" path="res://assets/player/transform3.png" id="9_jomdb"]
+[ext_resource type="Texture2D" uid="uid://cke5ia3ty5tps" path="res://assets/player/summon3.png" id="9_ve261"]
+[ext_resource type="Texture2D" uid="uid://chos2jn433sej" path="res://assets/player/summon4.png" id="10_86ujd"]
 [ext_resource type="Texture2D" uid="uid://wkcyjiayo7pw" path="res://assets/player/transform4.png" id="10_fyguy"]
+[ext_resource type="Texture2D" uid="uid://3xfcbosoo3s4" path="res://assets/player/summon5.png" id="11_1hvtn"]
 [ext_resource type="Texture2D" uid="uid://5bqn72b8rero" path="res://assets/player/transform5.png" id="11_af7jf"]
+[ext_resource type="Texture2D" uid="uid://1esiv05m657y" path="res://assets/player/summon6.png" id="12_8i4wh"]
 [ext_resource type="Texture2D" uid="uid://dhv8mj7yj664" path="res://assets/player/transform6.png" id="12_pf2ql"]
 [ext_resource type="Texture2D" uid="uid://cbayh1yagnrl0" path="res://assets/player/run1.png" id="14_ry0ol"]
 [ext_resource type="Texture2D" uid="uid://tf53sloo64ls" path="res://assets/player/run2.png" id="15_75vdj"]
@@ -47,6 +53,29 @@ animations = [{
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hl6df")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i6l77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ve261")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_86ujd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1hvtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8i4wh")
+}],
+"loop": true,
+"name": &"offer",
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -129,7 +158,7 @@ script = ExtResource("1_k0vyt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
-animation = &"ghostidle"
+animation = &"idle"
 flip_h = true
 
 [node name="Gun" parent="." instance=ExtResource("15_e43bu")]

@@ -6,13 +6,15 @@ const JUMP_VELOCITY = -300.0
 var player_life: int = 6
 @export var is_ghost: bool = false
 var is_transforming: bool = false
-@export var souls: int = 0
+@export var souls: int = 5
 @onready var player_health: Node2D = $PlayerLife
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
 @onready var Health_drain: Timer = $Timer
 @onready var terrain: TileMapLayer = $"../terrain"
 @onready var player: CharacterBody2D = $"."
+
+var is_offering_souls := false
 
 const TERRAIN = preload("res://shader/terrain.gdshader")
 
@@ -33,7 +35,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_transforming:
 		return
-
+	
+	if is_offering_souls:
+		velocity = Vector2.ZERO
+		return
+	
 	if not is_ghost and not is_on_floor():
 		velocity += get_gravity() * delta
 	elif is_ghost:
@@ -158,7 +164,13 @@ func _on_timer_timeout() -> void:
 		MinusHealth()
 		Health_drain.start()
 
-# --- New knockback function here ---
+func OfferSouls(is_offering: bool) -> void:
+	is_offering_souls = is_offering
+	if is_offering:
+		$AnimatedSprite2D.play("offer")
+	else:
+		$AnimatedSprite2D.play("idle")
+
 func apply_knockback(source_position: Vector2) -> void:
 	# Calculate direction from the source position to the player's position
 	var knockback_direction = (global_position - source_position).normalized()
