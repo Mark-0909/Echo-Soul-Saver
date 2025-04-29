@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -300.0
 var player_life: int = 6
 @export var is_ghost: bool = false
 var is_transforming: bool = false
-@export var souls: int = 5
+@export var souls: int = 0
 @onready var player_health: Node2D = $PlayerLife
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
@@ -15,6 +15,14 @@ var is_transforming: bool = false
 @onready var player: CharacterBody2D = $"."
 
 var is_offering_souls := false
+
+var enemy_alert_played := false
+
+var deployed := false
+
+var is_dead := false
+
+@export var detection_radius: float = 150.0
 
 const TERRAIN = preload("res://shader/terrain.gdshader")
 
@@ -33,6 +41,24 @@ func _ready() -> void:
 	terrain.material.set_shader_parameter("spread_radius", spread_radius)
 
 func _physics_process(delta: float) -> void:
+	
+	if is_dead:
+		if is_ghost:
+			await start_transform()
+		$AnimatedSprite2D.play("dead")
+		await get_tree().create_timer(0.7).timeout
+		get_tree().reload_current_scene()
+		return
+		
+		
+	if not deployed:
+		$AnimatedSprite2D.play("appear")
+		await get_tree().create_timer(0.7).timeout
+		deployed = true
+		return
+		
+		
+		
 	if is_transforming:
 		return
 
@@ -99,6 +125,28 @@ func _physics_process(delta: float) -> void:
 
 	# Final move
 	move_and_slide()
+	detect_nearby_enemies()
+
+func detect_nearby_enemies() -> void:
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	var enemy_near = false
+	
+	for enemy in enemies:
+		if not enemy or not enemy is Node2D:
+			continue
+		
+		if global_position.distance_to(enemy.global_position) <= detection_radius:
+			enemy_near = true
+			break
+	
+	if enemy_near and not enemy_alert_played:
+		$bgmusic.stop()
+		$enemynear.play()
+		enemy_alert_played = true
+	elif not enemy_near and enemy_alert_played:
+		$enemynear.stop()
+		$bgmusic.play()
+		enemy_alert_played = false
 
 
 
@@ -111,6 +159,15 @@ func PlusHealth() -> void:
 func MinusHealth() -> void:
 	player_life -= 1
 	PlayerState()
+	await blink_damage()
+
+func blink_damage() -> void:
+	for i in range(4):  # 4 blinks (2 times visible/invisible)
+		visible = false
+		await get_tree().create_timer(0.05).timeout
+		visible = true
+		await get_tree().create_timer(0.05).timeout
+
 	
 	
 func AddSoul() -> void:
@@ -127,7 +184,7 @@ func PlayerState() -> void:
 			2: $PlayerLife/AnimatedSprite2D.play("2life")
 			1: $PlayerLife/AnimatedSprite2D.play("1life")
 	else:
-		get_tree().reload_current_scene()
+		is_dead = true
 
 func start_transform() -> void:
 	is_transforming = true
@@ -176,10 +233,12 @@ func OfferSouls(is_offering: bool) -> void:
 	
 	is_offering_souls = is_offering
 	if is_offering:
+		$bgmusic.stop()
 		$ritualsfx.play()
 		$AnimatedSprite2D.play("offer")
 	else:
 		$ritualsfx.stop()
+		$bgmusic.play()
 		$AnimatedSprite2D.play("idle")
 
 func apply_knockback(source_position: Vector2) -> void:

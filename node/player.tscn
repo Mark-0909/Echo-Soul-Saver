@@ -1,17 +1,27 @@
-[gd_scene load_steps=26 format=3 uid="uid://vsnp2ticy0j8"]
+[gd_scene load_steps=38 format=3 uid="uid://vsnp2ticy0j8"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_k0vyt"]
 [ext_resource type="Texture2D" uid="uid://csxwpq4j76axv" path="res://assets/player/ghostidle1.png" id="2_5seh4"]
+[ext_resource type="Texture2D" uid="uid://buqyvjx3ckqph" path="res://assets/player/tp10.png" id="2_hnsjk"]
+[ext_resource type="Texture2D" uid="uid://cw5b83deoxdyn" path="res://assets/player/tp9.png" id="3_kg4ve"]
 [ext_resource type="Texture2D" uid="uid://coovne67lxa6y" path="res://assets/player/ghostidle2.png" id="3_ta57n"]
+[ext_resource type="Texture2D" uid="uid://drs2t4n3usuqp" path="res://assets/player/tp8.png" id="4_lw0mp"]
 [ext_resource type="Texture2D" uid="uid://b7jsxoe66mbyq" path="res://assets/player/ghostidle3.png" id="4_sc1en"]
+[ext_resource type="Texture2D" uid="uid://cgte7ngqbug3i" path="res://assets/player/tp7.png" id="5_truwm"]
+[ext_resource type="Texture2D" uid="uid://csurtlgguovqt" path="res://assets/player/tp6.png" id="6_7a500"]
+[ext_resource type="Texture2D" uid="uid://bjglap6fx2f17" path="res://assets/player/tp5.png" id="7_g87w6"]
 [ext_resource type="Texture2D" uid="uid://ciyely61gw1ag" path="res://assets/player/summon1.png" id="7_hl6df"]
 [ext_resource type="Texture2D" uid="uid://b8fid6ekemcmx" path="res://assets/player/transform1.png" id="7_wmr4m"]
 [ext_resource type="Texture2D" uid="uid://cro8nvetk0yra" path="res://assets/player/transform2.png" id="8_2ofyq"]
+[ext_resource type="Texture2D" uid="uid://dvrw3s4ihc3s6" path="res://assets/player/tp4.png" id="8_ay31q"]
 [ext_resource type="Texture2D" uid="uid://6bw5hbcwemu4" path="res://assets/player/summon2.png" id="8_i6l77"]
 [ext_resource type="Texture2D" uid="uid://bwy2cbcbqkyv1" path="res://assets/player/transform3.png" id="9_jomdb"]
+[ext_resource type="Texture2D" uid="uid://cox6qvq0qlw8h" path="res://assets/player/tp3.png" id="9_tombh"]
 [ext_resource type="Texture2D" uid="uid://cke5ia3ty5tps" path="res://assets/player/summon3.png" id="9_ve261"]
+[ext_resource type="Texture2D" uid="uid://c4ep10cenfa6n" path="res://assets/player/tp2.png" id="10_1gdy4"]
 [ext_resource type="Texture2D" uid="uid://chos2jn433sej" path="res://assets/player/summon4.png" id="10_86ujd"]
 [ext_resource type="Texture2D" uid="uid://wkcyjiayo7pw" path="res://assets/player/transform4.png" id="10_fyguy"]
+[ext_resource type="Texture2D" uid="uid://kr81rit4emmh" path="res://assets/player/tp1.png" id="11_0d2v0"]
 [ext_resource type="Texture2D" uid="uid://3xfcbosoo3s4" path="res://assets/player/summon5.png" id="11_1hvtn"]
 [ext_resource type="Texture2D" uid="uid://5bqn72b8rero" path="res://assets/player/transform5.png" id="11_af7jf"]
 [ext_resource type="Texture2D" uid="uid://1esiv05m657y" path="res://assets/player/summon6.png" id="12_8i4wh"]
@@ -22,9 +32,81 @@
 [ext_resource type="Texture2D" uid="uid://lr8qvpjg7bkq" path="res://assets/player/run3.png" id="16_oukyn"]
 [ext_resource type="Texture2D" uid="uid://uxt480ntvpnl" path="res://assets/player/run5.png" id="17_or5pr"]
 [ext_resource type="AudioStream" uid="uid://rxir82q34wgv" path="res://assets/sfx/ritual.mp3" id="22_ttcss"]
+[ext_resource type="AudioStream" uid="uid://dhvrhtba41i0u" path="res://assets/sfx/enemynear.mp3" id="23_3fa4c"]
+[ext_resource type="AudioStream" uid="uid://d386y7o3xmkws" path="res://assets/sfx/bgmusic.mp3" id="24_guufd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4a28"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hnsjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kg4ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lw0mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_truwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7a500")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g87w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ay31q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tombh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1gdy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_0d2v0")
+}],
+"loop": true,
+"name": &"appear",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_0d2v0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1gdy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tombh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ay31q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g87w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7a500")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_truwm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lw0mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kg4ve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hnsjk")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_5seh4")
@@ -159,7 +241,8 @@ script = ExtResource("1_k0vyt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.450521, 0.465169)
 sprite_frames = SubResource("SpriteFrames_w4a28")
-animation = &"idle"
+animation = &"dead"
+frame_progress = 0.35318
 flip_h = true
 
 [node name="Gun" parent="." instance=ExtResource("15_e43bu")]
@@ -179,5 +262,16 @@ wait_time = 1.5
 
 [node name="ritualsfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_ttcss")
+
+[node name="enemynear" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_3fa4c")
+volume_db = -6.195
+parameters/looping = true
+
+[node name="bgmusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_guufd")
+volume_db = -6.195
+autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

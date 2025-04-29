@@ -19,7 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 			if wood_sprite:
 				wood_sprite.play("open")
 
-			await get_tree().create_timer(0.7).timeout
+			await get_tree().create_timer(0.5).timeout
 			wood.queue_free()
 			body.set("souls", 0)
 
