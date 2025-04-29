@@ -11,7 +11,8 @@ var is_transforming: bool = false
 @onready var game_manager: Node = %gameManager
 @onready var timer: Timer = $"../gameManager/Timer"
 @onready var Health_drain: Timer = $Timer
-@onready var terrain: TileMapLayer = $"../terrain2"
+@onready var terrain: TileMapLayer = $"../terrain"
+@onready var player: CharacterBody2D = $"."
 
 const TERRAIN = preload("res://shader/terrain.gdshader")
 
@@ -97,7 +98,9 @@ func PlusHealth() -> void:
 
 func MinusHealth() -> void:
 	player_life -= 1
+	apply_knockback(global_position)
 	PlayerState()
+	
 	
 func AddSoul() -> void:
 	souls += 1

@@ -122,7 +122,7 @@ height = 37.1535
 [sub_resource type="Gradient" id="Gradient_cxaek"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[node name="Node2D" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.83371, 0.861291)
 script = ExtResource("1_k0vyt")
 
