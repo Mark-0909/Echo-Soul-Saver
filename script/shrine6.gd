@@ -31,7 +31,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 			if body.has_method("OfferSouls"):
 				body.OfferSouls(false)
-				game_manager.set("checkpoint", 1)
+				game_manager.set("checkpoint", 5)
 				
 				print("checkpoint: ", game_manager.get("checkpoint"))
 		else:
