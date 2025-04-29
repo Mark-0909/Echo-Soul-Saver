@@ -35,34 +35,42 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if is_transforming:
 		return
-	
-	if is_offering_souls:
-		velocity = Vector2.ZERO
-		return
-	
+
+	# Gravity
 	if not is_ghost and not is_on_floor():
 		velocity += get_gravity() * delta
 	elif is_ghost:
 		velocity.y = 0
 
+	# If offering souls, freeze movement and force animation
+	if is_offering_souls:
+		velocity.x = 0
+		# Ensure we don't override the animation
+		if not $AnimatedSprite2D.is_playing() or $AnimatedSprite2D.animation != "offer":
+			$AnimatedSprite2D.play("offer")
+		move_and_slide()
+		return  # Stop all other processing
+
+	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_ghost:
 		velocity.y = JUMP_VELOCITY
 
+	# Movement Input
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y: float = Input.get_axis("jump", "down") if is_ghost else 0.0
 
-	# Animations
+	# Animation
 	if direction_x == 0 and direction_y == 0:
 		$AnimatedSprite2D.play("ghostidle" if is_ghost else "idle")
 	else:
 		if is_ghost:
-			$AnimatedSprite2D.play("ghostidle")  # <- I assume you want ghost **walking** animation, not idle
+			$AnimatedSprite2D.play("ghostwalk")  # Replace with your walk anim
 		elif is_on_floor():
 			$AnimatedSprite2D.play("walk")
 		else:
 			$AnimatedSprite2D.play("jump")
 
-	# Flip sprite horizontally
+	# Flip sprite
 	var mouse_x = get_global_mouse_position().x
 	var player_x = global_position.x
 	if abs(direction_x) > 0:
@@ -70,7 +78,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.flip_h = mouse_x > player_x
 
-	# Apply movement
+	# Velocity application
 	if is_ghost:
 		velocity.x = direction_x * SPEED
 		velocity.y = direction_y * SPEED
@@ -78,23 +86,21 @@ func _physics_process(delta: float) -> void:
 		if direction_x != 0:
 			velocity.x = direction_x * SPEED
 		else:
-		# Slow down naturally instead of forcibly snapping
-			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)  # Smooth deceleration
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
 
-
-	# Check for transform button press and trigger transformation
+	# Transform input
 	if Input.is_action_just_pressed("transform") and not is_transforming:
-		print("Transform button pressed!")  # Debug print
 		await start_transform()
 
-	# Update ghost_origin smoothly
+	# Shader update
 	if is_ghost:
 		ghost_origin = ghost_origin.lerp(target_ghost_origin, 0.1)
-
-		# Update the shader parameter for ghost_origin
 		terrain.material.set_shader_parameter("ghost_origin", ghost_origin)
 
+	# Final move
 	move_and_slide()
+
+
 
 func PlusHealth() -> void:
 	if player_life >= 6:
@@ -165,6 +171,9 @@ func _on_timer_timeout() -> void:
 		Health_drain.start()
 
 func OfferSouls(is_offering: bool) -> void:
+	if is_ghost:
+		await start_transform()
+	
 	is_offering_souls = is_offering
 	if is_offering:
 		$AnimatedSprite2D.play("offer")

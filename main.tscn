@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=32 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Shader" path="res://background.gdshader" id="1_4ugga"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="9_vlmmr"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://b4q3iw1aqb3xx" path="res://node/slime1.tscn" id="10_k2up2"]
+[ext_resource type="PackedScene" uid="uid://cbrnprd7ajv2e" path="res://node/soul.tscn" id="13_ri4au"]
 [ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="16_b8dq0"]
 [ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="17_wpa1r"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="21_kli5n"]
@@ -413,6 +414,18 @@ script = ExtResource("9_fncjx")
 
 [node name="Shrine" parent="Shrine" instance=ExtResource("4_oxol4")]
 position = Vector2(-407, -4036)
+
+[node name="Soul" parent="Shrine" instance=ExtResource("13_ri4au")]
+position = Vector2(1536, -327)
+
+[node name="Soul2" parent="Shrine" instance=ExtResource("13_ri4au")]
+position = Vector2(1611, -342)
+
+[node name="Soul3" parent="Shrine" instance=ExtResource("13_ri4au")]
+position = Vector2(1654, -333)
+
+[node name="Soul4" parent="Shrine" instance=ExtResource("13_ri4au")]
+position = Vector2(1569, -359)
 
 [node name="ghost" type="Node" parent="."]
 

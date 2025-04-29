@@ -69,7 +69,7 @@ func _on_timer_timeout() -> void:
 
 
 func Disperse() -> void:
-	await get_tree().create_timer(randi_range(1, 3)).timeout
+	await get_tree().create_timer(randi_range(0, 0.5)).timeout
 	$AnimatedSprite2D.play("disperse")
 	await get_tree().create_timer(0.5).timeout
 	queue_free()

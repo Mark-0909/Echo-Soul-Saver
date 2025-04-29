@@ -8,7 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and not is_activated:
 		if body.get("souls") >= 5:
 			print("Enough souls")
-			is_activated = true  # Prevent reactivation during await
+			is_activated = true
 
 			if body.has_method("OfferSouls"):
 				body.OfferSouls(true)
@@ -23,9 +23,10 @@ func _on_body_entered(body: Node2D) -> void:
 			wood.queue_free()
 			body.set("souls", 0)
 
+			# Wait for each soul to disperse
 			for soul in get_tree().get_nodes_in_group("Soul"):
 				if soul.has_method("Disperse"):
-					soul.Disperse()
+					await soul.Disperse()
 
 			if body.has_method("OfferSouls"):
 				body.OfferSouls(false)
