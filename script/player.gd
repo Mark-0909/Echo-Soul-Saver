@@ -272,6 +272,31 @@ func OfferSouls(is_offering: bool) -> void:
 		$bgmusic.play()
 		$AnimatedSprite2D.play("idle")
 
+func OfferSouls2(is_offering: bool) -> void:
+	if is_ghost:
+		await start_transform()
+
+	is_offering_souls = is_offering
+
+	if is_offering:
+		$bgmusic.stop()
+		$ritualsfx.play()
+		$AnimatedSprite2D.play("offer")
+
+		# ⏳ Wait for sound to finish
+		await $ritualsfx.finished
+
+	else:
+		$ritualsfx.stop()
+		$bgmusic.play()
+		$AnimatedSprite2D.play("idle")
+
+func Done(is_offering: bool) -> void:
+	if is_ghost:
+		await start_transform()
+	$AnimatedSprite2D.play("offer")
+	is_offering_souls = is_offering
+
 func apply_knockback(source_position: Vector2) -> void:
 	# Calculate direction from the source position to the player's position
 	var knockback_direction = (global_position - source_position).normalized()

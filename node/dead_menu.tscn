@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7lyyuxmm1x5b"]
+[gd_scene load_steps=11 format=3 uid="uid://b7lyyuxmm1x5b"]
 
 [ext_resource type="Script" path="res://node/dead_menu.gd" id="1_3sy1t"]
 [ext_resource type="Texture2D" uid="uid://c6mrrkxekgwog" path="res://assets/instruction/HUD Text Box.png" id="2_2baur"]
@@ -26,6 +26,9 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="FontVariation" id="FontVariation_gc57k"]
+fallbacks = Array[Font]([null])
+
 [node name="DeadMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -46,7 +49,7 @@ script = ExtResource("1_3sy1t")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(14.1136, 5.35301)
+scale = Vector2(14.3013, 6.10873)
 theme_override_styles/panel = SubResource("StyleBoxTexture_owk2v")
 
 [node name="Button" type="Button" parent="."]
@@ -57,10 +60,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 44.9562
-offset_top = 79.4413
-offset_right = 249.956
-offset_bottom = 155.441
+offset_left = 45.3445
+offset_top = 129.327
+offset_right = 250.344
+offset_bottom = 205.327
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.35448, 0.736674)
@@ -80,10 +83,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 44.9561
-offset_top = 19.0067
-offset_right = 249.956
-offset_bottom = 95.0067
+offset_left = 47.1583
+offset_top = 68.397
+offset_right = 252.158
+offset_bottom = 144.397
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.35448, 0.736674)
@@ -103,13 +106,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 203.0
-offset_top = 152.0
-offset_right = 360.0
-offset_bottom = 213.0
+offset_left = 196.795
+offset_top = 196.828
+offset_right = 366.795
+offset_bottom = 247.828
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.11698, 0.542707)
+theme_override_fonts/font = SubResource("FontVariation_gc57k")
+theme_override_font_sizes/font_size = 37
 theme_override_styles/focus = SubResource("StyleBoxFlat_b3yek")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_0rnkm")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_er8m2")
@@ -117,6 +122,15 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qn4tv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xwlaf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
 text = "EXIT"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 189.54
+offset_top = 18.518
+offset_right = 388.54
+offset_bottom = 68.518
+theme_override_font_sizes/font_size = 36
+text = "YOU DIED!!!"
 
 [connection signal="pressed" from="Button" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_revive_pressed"]

@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="9_vlmmr"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://cpmwvroetgqc4" path="res://node/slime1.tscn" id="10_k2up2"]
-[ext_resource type="PackedScene" uid="uid://cbrnprd7ajv2e" path="res://node/soul.tscn" id="15_f7ciu"]
 [ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="16_b8dq0"]
 [ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="17_wpa1r"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="21_kli5n"]
@@ -32,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://l8tonixpks8v" path="res://assets/pause.png" id="28_jhvgc"]
 [ext_resource type="Texture2D" uid="uid://cideo0yt0we20" path="res://assets/instruction/Game Buttons Instructions.png" id="28_mlynv"]
 [ext_resource type="PackedScene" uid="uid://b7lyyuxmm1x5b" path="res://node/dead_menu.tscn" id="31_pgp6w"]
+[ext_resource type="PackedScene" uid="uid://f047g7ojnpyi" path="res://node/ending.tscn" id="32_q4kya"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlvw7"]
 shader = ExtResource("1_4ugga")
@@ -1119,7 +1119,7 @@ stream = ExtResource("10_d3aku")
 volume_db = -5.255
 
 [node name="Player" parent="." instance=ExtResource("1_4p7vb")]
-position = Vector2(1782, -3532)
+position = Vector2(-336, -73)
 scale = Vector2(0.7, 0.7)
 
 [node name="PlayerLife" parent="Player" instance=ExtResource("5_aoxt2")]
@@ -1127,7 +1127,7 @@ position = Vector2(-1.42857, -32.8571)
 scale = Vector2(0.592127, 0.647653)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3.485, 3.485)
+zoom = Vector2(4.015, 4.015)
 limit_bottom = 255
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -1188,6 +1188,33 @@ scale = Vector2(0.604675, 0.543796)
 theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
 text = "Press AWD to move"
 
+[node name="Label4" type="Label" parent="Instruction"]
+offset_left = 311.0
+offset_top = -207.0
+offset_right = 529.0
+offset_bottom = -184.0
+scale = Vector2(0.604675, 0.543796)
+theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
+text = "Use Ghost Form to kill ghost"
+
+[node name="Label5" type="Label" parent="Instruction"]
+offset_left = 646.0
+offset_top = -299.0
+offset_right = 947.0
+offset_bottom = -276.0
+scale = Vector2(0.604675, 0.543796)
+theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
+text = "Use physical form to kill other enemies"
+
+[node name="Label6" type="Label" parent="Instruction"]
+offset_left = 1697.0
+offset_top = -419.0
+offset_right = 1998.0
+offset_bottom = -396.0
+scale = Vector2(0.604675, 0.543796)
+theme_override_colors/font_color = Color(0.341176, 0.341176, 0.341176, 1)
+text = "Use Ghost form to go up"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Button" type="Button" parent="CanvasLayer"]
@@ -1231,22 +1258,14 @@ offset_top = -452.0
 offset_right = -250.0
 offset_bottom = -452.0
 
+[node name="Ending" parent="CanvasLayer" instance=ExtResource("32_q4kya")]
+visible = false
+offset_left = -247.0
+offset_top = -438.0
+offset_right = -247.0
+offset_bottom = -438.0
+
 [node name="flooring" type="Node" parent="."]
-
-[node name="Soul" parent="." instance=ExtResource("15_f7ciu")]
-position = Vector2(1746, -3573)
-
-[node name="Soul2" parent="." instance=ExtResource("15_f7ciu")]
-position = Vector2(1788, -3577)
-
-[node name="Soul3" parent="." instance=ExtResource("15_f7ciu")]
-position = Vector2(1773, -3615)
-
-[node name="Soul4" parent="." instance=ExtResource("15_f7ciu")]
-position = Vector2(1738, -3538)
-
-[node name="Soul5" parent="." instance=ExtResource("15_f7ciu")]
-position = Vector2(1739, -3604)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_pause_pressed"]
