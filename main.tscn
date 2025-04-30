@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=46 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Shader" path="res://background.gdshader" id="1_4ugga"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://ccybxu1vb5js" path="res://wreckingball.tscn" id="9_vlmmr"]
 [ext_resource type="AudioStream" uid="uid://woh75aaspl3k" path="res://assets/gamover.ogg" id="10_d3aku"]
 [ext_resource type="PackedScene" uid="uid://cpmwvroetgqc4" path="res://node/slime1.tscn" id="10_k2up2"]
+[ext_resource type="PackedScene" uid="uid://cbrnprd7ajv2e" path="res://node/soul.tscn" id="15_f7ciu"]
 [ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="16_b8dq0"]
 [ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="17_wpa1r"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="21_kli5n"]
@@ -1118,7 +1119,7 @@ stream = ExtResource("10_d3aku")
 volume_db = -5.255
 
 [node name="Player" parent="." instance=ExtResource("1_4p7vb")]
-position = Vector2(-368, 12)
+position = Vector2(1782, -3532)
 scale = Vector2(0.7, 0.7)
 
 [node name="PlayerLife" parent="Player" instance=ExtResource("5_aoxt2")]
@@ -1231,6 +1232,21 @@ offset_right = -250.0
 offset_bottom = -452.0
 
 [node name="flooring" type="Node" parent="."]
+
+[node name="Soul" parent="." instance=ExtResource("15_f7ciu")]
+position = Vector2(1746, -3573)
+
+[node name="Soul2" parent="." instance=ExtResource("15_f7ciu")]
+position = Vector2(1788, -3577)
+
+[node name="Soul3" parent="." instance=ExtResource("15_f7ciu")]
+position = Vector2(1773, -3615)
+
+[node name="Soul4" parent="." instance=ExtResource("15_f7ciu")]
+position = Vector2(1738, -3538)
+
+[node name="Soul5" parent="." instance=ExtResource("15_f7ciu")]
+position = Vector2(1739, -3604)
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_pause_pressed"]

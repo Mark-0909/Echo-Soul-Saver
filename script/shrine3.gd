@@ -9,7 +9,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and not is_activated:
 		if body.get("souls") >= 5:
 			print("Enough souls")
-			is_activated = true  # Prevent reactivation during await
+			is_activated = true
 
 			if body.has_method("OfferSouls"):
 				body.OfferSouls(true)
@@ -20,13 +20,14 @@ func _on_body_entered(body: Node2D) -> void:
 			if wood_sprite:
 				wood_sprite.play("open")
 
-			await get_tree().create_timer(0.7).timeout
+			await get_tree().create_timer(0.5).timeout
 			wood.queue_free()
 			body.set("souls", 0)
 
+			# Wait for each soul to disperse
 			for soul in get_tree().get_nodes_in_group("Soul"):
 				if soul.has_method("Disperse"):
-					soul.Disperse()
+					await soul.Disperse()
 
 			if body.has_method("OfferSouls"):
 				body.OfferSouls(false)
@@ -34,5 +35,6 @@ func _on_body_entered(body: Node2D) -> void:
 				
 				print("checkpoint: ", game_manager.get("checkpoint"))
 				$"../../CanvasLayer/floor".text = "FLOOR 3"
+			
 		else:
 			print("Not enough souls:", body.get("souls"))
