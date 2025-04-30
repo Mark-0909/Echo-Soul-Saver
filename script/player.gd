@@ -32,7 +32,10 @@ var ghost_origin: Vector2 = Vector2(0, 0)  # Starting at player's position
 var target_ghost_origin: Vector2 = Vector2(0, 0)  # Target position for ghost effect
 const spread_radius = 200.0
 
+@export var reviving = false
+
 func _ready() -> void:
+	
 	if is_ghost:
 		Health_drain.start()
 	target_ghost_origin = global_position  # Initialize target_ghost_origin with the player's position
@@ -43,24 +46,46 @@ func _ready() -> void:
 	terrain.material.set_shader_parameter("spread_radius", spread_radius)
 
 func _physics_process(delta: float) -> void:
-	
+	if reviving:
+		is_dying = false
+		is_dead = false
+		var checkpoint = %gameManager.checkpoint
+		if checkpoint != null:
+			match checkpoint:
+				1:
+					get_tree().reload_current_scene()
+					return
+				2, 3, 4, 5, 6:
+					var shrine_path = "/root/main/Shrine/Shrine%d" % checkpoint
+					var shrine = get_node_or_null(shrine_path)
+					if shrine:
+						global_position = shrine.global_position
+					else:
+						print("Shrine not found for checkpoint ", checkpoint)
+						reviving = false
+						return
+
+			$AnimatedSprite2D.play("appear")
+			await get_tree().create_timer(0.7).timeout
+			$AnimatedSprite2D.play("idle")
+			player_life = 6
+			PlayerState() 
+			reviving = false
+			return
+
 	if is_dead:
-		
 		if is_ghost:
 			await start_transform()
 		$AnimatedSprite2D.play("dead")
 		await get_tree().create_timer(0.7).timeout
 		return
-		
-		
+
 	if not deployed:
 		$AnimatedSprite2D.play("appear")
 		await get_tree().create_timer(0.7).timeout
 		deployed = true
 		return
-		
-		
-		
+
 	if is_transforming:
 		return
 
@@ -70,20 +95,19 @@ func _physics_process(delta: float) -> void:
 	elif is_ghost:
 		velocity.y = 0
 
-	# If offering souls, freeze movement and force animation
+	# Soul offering
 	if is_offering_souls:
 		velocity.x = 0
-		# Ensure we don't override the animation
 		if not $AnimatedSprite2D.is_playing() or $AnimatedSprite2D.animation != "offer":
 			$AnimatedSprite2D.play("offer")
 		move_and_slide()
-		return  # Stop all other processing
+		return
 
 	# Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not is_ghost:
 		velocity.y = JUMP_VELOCITY
 
-	# Movement Input
+	# Movement input
 	var direction_x := Input.get_axis("left", "right")
 	var direction_y: float = Input.get_axis("jump", "down") if is_ghost else 0.0
 
@@ -92,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("ghostidle" if is_ghost else "idle")
 	else:
 		if is_ghost:
-			$AnimatedSprite2D.play("ghostwalk")  # Replace with your walk anim
+			$AnimatedSprite2D.play("ghostwalk")
 		elif is_on_floor():
 			$AnimatedSprite2D.play("walk")
 		else:
@@ -106,7 +130,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.flip_h = mouse_x > player_x
 
-	# Velocity application
+	# Velocity
 	if is_ghost:
 		velocity.x = direction_x * SPEED
 		velocity.y = direction_y * SPEED
@@ -120,7 +144,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("transform") and not is_transforming:
 		await start_transform()
 
-	# Shader update
+	# Ghost shader
 	if is_ghost:
 		ghost_origin = ghost_origin.lerp(target_ghost_origin, 0.1)
 		terrain.material.set_shader_parameter("ghost_origin", ghost_origin)
@@ -128,6 +152,7 @@ func _physics_process(delta: float) -> void:
 	# Final move
 	move_and_slide()
 	detect_nearby_enemies()
+
 
 func detect_nearby_enemies() -> void:
 	var enemies = get_tree().get_nodes_in_group("Enemy")
@@ -263,4 +288,11 @@ func apply_knockback(source_position: Vector2) -> void:
 
 
 func _on_deadsfx_finished() -> void:
-	get_tree().reload_current_scene()
+	var dead_menu: Control = $"../CanvasLayer/DeadMenu"
+
+	if not get_tree().paused:
+		get_tree().paused = true
+		dead_menu.visible = true
+	else:
+		get_tree().paused = false
+		dead_menu.visible = false

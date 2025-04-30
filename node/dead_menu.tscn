@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://px26joct1hh6"]
+[gd_scene load_steps=10 format=3 uid="uid://b7lyyuxmm1x5b"]
 
-[ext_resource type="Texture2D" uid="uid://c6mrrkxekgwog" path="res://assets/instruction/HUD Text Box.png" id="1_1hqoi"]
-[ext_resource type="Script" path="res://node/pause_menu.gd" id="1_yr4fd"]
+[ext_resource type="Script" path="res://node/dead_menu.gd" id="1_3sy1t"]
+[ext_resource type="Texture2D" uid="uid://c6mrrkxekgwog" path="res://assets/instruction/HUD Text Box.png" id="2_2baur"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owk2v"]
-texture = ExtResource("1_1hqoi")
+texture = ExtResource("2_2baur")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3yek"]
 bg_color = Color(0.1312, 0.275247, 0.41, 1)
@@ -26,7 +26,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PauseMenu" type="Control"]
+[node name="DeadMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,7 +40,7 @@ offset_bottom = -696.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.10267, 3.3481)
-script = ExtResource("1_yr4fd")
+script = ExtResource("1_3sy1t")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -93,7 +93,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_er8m2")
 theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_qn4tv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_xwlaf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
-text = "RESUME"
+text = "REVIVE"
 
 [node name="Button3" type="Button" parent="."]
 process_mode = 3
@@ -119,5 +119,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jnm52")
 text = "EXIT"
 
 [connection signal="pressed" from="Button" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_revive_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_exitpressed"]

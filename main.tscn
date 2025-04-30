@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=4 uid="uid://d27eex70pvot3"]
+[gd_scene load_steps=45 format=4 uid="uid://d27eex70pvot3"]
 
 [ext_resource type="PackedScene" uid="uid://vsnp2ticy0j8" path="res://node/player.tscn" id="1_4p7vb"]
 [ext_resource type="Shader" path="res://background.gdshader" id="1_4ugga"]
+[ext_resource type="Script" path="res://main.gd" id="1_58a4v"]
 [ext_resource type="PackedScene" uid="uid://bhyvt5rul03d7" path="res://node/wood1.tscn" id="1_b8sp5"]
 [ext_resource type="Shader" path="res://shader/terrain.gdshader" id="1_vf2a3"]
 [ext_resource type="PackedScene" uid="uid://ifjihbs82ctv" path="res://node/killzone.tscn" id="3_eagbo"]
@@ -25,11 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://ceyvtofqaqnud" path="res://node/plant2.tscn" id="16_b8dq0"]
 [ext_resource type="PackedScene" uid="uid://b6co5yok6vrix" path="res://node/plant3.tscn" id="17_wpa1r"]
 [ext_resource type="PackedScene" uid="uid://quf8pdbp4pfw" path="res://node/plant1.tscn" id="21_kli5n"]
+[ext_resource type="PackedScene" uid="uid://px26joct1hh6" path="res://node/pause_menu.tscn" id="25_xoif1"]
 [ext_resource type="Texture2D" uid="uid://cdbjmhpu0b64w" path="res://assets/instruction/KeySample.png" id="27_73lce"]
 [ext_resource type="Texture2D" uid="uid://l8tonixpks8v" path="res://assets/pause.png" id="28_jhvgc"]
 [ext_resource type="Texture2D" uid="uid://cideo0yt0we20" path="res://assets/instruction/Game Buttons Instructions.png" id="28_mlynv"]
-
-[sub_resource type="GDScript" id="GDScript_q185f"]
+[ext_resource type="PackedScene" uid="uid://b7lyyuxmm1x5b" path="res://node/dead_menu.tscn" id="31_pgp6w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dlvw7"]
 shader = ExtResource("1_4ugga")
@@ -300,7 +301,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [node name="main" type="Node2D"]
-script = SubResource("GDScript_q185f")
+script = ExtResource("1_58a4v")
 metadata/_edit_vertical_guides_ = [-710.0]
 
 [node name="background" type="TileMapLayer" parent="."]
@@ -1215,6 +1216,21 @@ scale = Vector2(2.9541, 2.89518)
 theme_override_colors/font_color = Color(0.46, 0.46, 0.46, 1)
 text = "FLOOR 1"
 
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("25_xoif1")]
+visible = false
+offset_left = -272.0
+offset_top = -339.0
+offset_right = -272.0
+offset_bottom = -339.0
+
+[node name="DeadMenu" parent="CanvasLayer" instance=ExtResource("31_pgp6w")]
+visible = false
+offset_left = -250.0
+offset_top = -452.0
+offset_right = -250.0
+offset_bottom = -452.0
+
 [node name="flooring" type="Node" parent="."]
 
 [connection signal="timeout" from="gameManager/Timer" to="gameManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_pause_pressed"]

@@ -6,7 +6,7 @@ var score = 0;
 
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
-@export var checkpoint := 0
+@export var checkpoint = 1
 
 func add_score():
 	score += 1
