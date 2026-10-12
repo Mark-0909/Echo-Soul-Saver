@@ -31,9 +31,9 @@ Experience the descent between realms directly in your browser or download the b
 </tr>
 <tr>
 
-<td align="center"><img width="420" height="1242" alt="Screenshot 2026-10-12 110423" src="https://github.com/user-attachments/assets/a10bfd0a-64f0-4c20-bfd4-3dd6a0751855" />
+<td align="center"><img width="420" alt="Screenshot 2026-10-12 110423" src="https://github.com/user-attachments/assets/a10bfd0a-64f0-4c20-bfd4-3dd6a0751855" />
 </td>
-<td align="center"><img width="420" height="1166" alt="Screenshot 2026-10-12 110457" src="https://github.com/user-attachments/assets/93fd6a6d-a98c-4d10-a77e-cb6e7aab2e43" />
+<td align="center"><img width="420" alt="Screenshot 2026-10-12 110457" src="https://github.com/user-attachments/assets/93fd6a6d-a98c-4d10-a77e-cb6e7aab2e43" />
 </td>
 </tr>
 </table>
